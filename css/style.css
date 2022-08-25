@@ -1,0 +1,42 @@
+body.renew{
+	background-image:url("../image/bg.jpg")
+}
+.boxsh{
+	opacity:0.9;
+}
+.furbish{
+	color:green;
+}
+#toru{
+	width:150px;
+	margin-bottom:20pt;
+}
+body{
+	background-attachment:fixed;
+}
+.fr{
+margin-top:10pt;
+margin-bottom:10pt;
+margin-left:20pt;
+}
+.hubmsg{
+	text-align:center;
+	padding:15px;
+	border:1px solid green;
+}
+.iconbase{
+	font-size:100pt;
+}
+.tgreen{
+	color:green;
+}
+.textme{
+	text-align:center;
+	padding-bottom:70pt;
+	font-size:20pt;
+	
+}
+.footimg{
+	border:6px solid white;
+}
+

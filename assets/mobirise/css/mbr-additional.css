@@ -1,0 +1,34 @@
+#header1-2 H1 {
+  font-size: 46px;
+}
+#header1-2 P {
+  font-size: 19px;
+}
+#pricing-table1-4 SPAN {
+  font-size: 72px;
+  color: #28324e;
+}
+#pricing-table1-4 SUP {
+  font-size: 20px;
+}
+#pricing-table1-4 UL {
+  color: #28324e;
+}
+#ext_menu-0 .mbr-brand__name {
+  font-size: 16px;
+}
+#ext_menu-0.mbr-navbar--stuck .mbr-navbar__section {
+  background: #28324e;
+}
+#ext_menu-0 .mbr-navbar__hamburger {
+  color: #ffffff;
+}
+#msg-box5-3 .mbr-header__text {
+  color: #ffffff;
+}
+#msg-box5-3 .mbr-header__subtext {
+  color: #ffffff;
+}
+#msg-box5-3 .mbr-article {
+  color: #ffffff;
+}
