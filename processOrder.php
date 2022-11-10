@@ -30,8 +30,17 @@ if(x_validatesession("XCAPE_HACKS")){
 	$service = x_clean(x_post("servicelist"));
 	
 	if($service == ""){
+		
 		finish("./","You have to choose a service.");
-		//echo "Fix it!";
+		
+	}else{
+		$foodHash = "52ae104d91f749e0ab6f3bebf553d296";
+		if($service == $foodHash){
+			finish("food-processor?pageToken=$service","0");
+		}else{
+			finish("./","Selected Service coming soon!.");
+		}
+		
 	}
  }
  else{

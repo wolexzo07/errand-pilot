@@ -5,6 +5,7 @@ if(x_count("siteinfom","id='1'") > 0){
 		
 		$siteaddress = $site["company_address"];
 		$company = $site["company_name"];
+		$wh = $site["working_hour"];
 		
 		$phone1 = $site["phone1"];
 		$phone2 = $site["phone2"];
@@ -40,6 +41,7 @@ if(x_count("siteinfom","id='1'") > 0){
 }else{
 		$siteaddress = "";
 		$company = "";
+		$wh = "";
 		
 		$phone1 = "";
 		$phone2 = "";

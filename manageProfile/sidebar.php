@@ -8,24 +8,41 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                   <p style="color:white;padding-left:10px;display:;">Menu</p>
 					<li class="active">
                         <a href="#">
                             <i class="fa fa-dashboard"></i>
                             Dashboard
                         </a>
                     </li>
+					<?php
+					if(x_count("manageaccount","is_big='1' AND id='$user_id'") > 0){
+						?>
+					<li>
+                        <a href="#" onclick="load('a_admin_manager')">
+                            <i class="fa fa-key"></i>
+                            Admin Page
+                        </a>
+                    </li>
+						<?php
+					}
+					?>
+					<li>
+                        <a href="#" onclick="load('testi')">
+                            <i class="fa fa-credit-card"></i>
+                            Fund Wallet
+                        </a>
+                    </li>
 					
 					<li>
                         <a href="#" onclick="load('test')">
-                            <i class="fa fa-car"></i>
+                            <i class="fa fa-globe"></i>
                             Place Order
                         </a>
                     </li>
 					
                     <li>
                         <a href="#">
-                            <i class="fa fa-laptop"></i>
+                            <i class="fa fa-signal"></i>
                             Order History
                         </a>
                     </li>
@@ -39,6 +56,12 @@
                         <a href="#">
                             <i class="fa fa-cog"></i>
                             Settings
+                        </a>
+                    </li>
+					<li>
+                        <a href="../logout">
+                            <i class="fa fa-power-off"></i>
+                            Logout
                         </a>
                     </li>
                 </ul>

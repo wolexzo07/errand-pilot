@@ -4,11 +4,13 @@ include_once("finishit.php");
 include_once("siteinfo.php");
 xstart(0);
 include_once("refcoder.php");
+
 if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
 
 	finish("notify/maintenance","Access denied!");
 	exit();
 }
+
 if(isset($_SESSION["IQGAMES_ID_2018_VISION"])){
 	finish("dash/manpag","0");
 	exit();
@@ -36,7 +38,7 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
 				<div class="modal-header">
 		        	<center>
 					<?php include("sitelogoinc.php");?>
-					<h3 class="modal-title card-title text-center" id="myModalLabel"><font class="furbish">Create an</font> account</h3></center>
+					<h3 class="modal-title card-title text-center" id="myModalLabel"><font class="furbish">Create new</font> account</h3></center>
 		      	</div>
 		      	<div class="modal-body">
 					<div class="row">
@@ -45,38 +47,76 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
 
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/scriptloaded.js"></script>
-
-
+	
+  <div class="card-content">
+	
 	<form class="form" method="POST" id="regHandler"  autocomplete="off">
-								<div class="card-content">
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="fa fa-user fa-2x"></i>
-										</span>
-										<input type="text" autocomplete="off" required="required" id="full" class="form-control" placeholder="Full Name..." name="full"/>
-									</div>
+	
+	 <div class="padd-form">
+	 
+	 <h4><i class="fa fa-user"></i> &nbsp;&nbsp;Personal <font style="color:green;">Details</font></h4>
+	 
+	 <div class="row">
+	 
+		<div class="col-lg-6 col-md-6 col-12">
+			<input type="text" autocomplete="off" required="required" id="last" class="form-control" placeholder="Enter last name (Surname)" name="last"/>
+		</div>
+		<div class="col-lg-6 col-md-6 col-12">
+			<input type="text" autocomplete="off" required="required" id="first" class="form-control" placeholder="Enter first name" name="first"/>
+		</div>
+		
+	 </div>
 
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="fa fa-inbox fa-2x"></i>
-										</span>
-										<input type="email" id="email" autocomplete="off" required="required" class="form-control" placeholder="Email..." name="email"/>
-									</div>
+	<div class="row">
+	
+		<div class="col-lg-6 col-md-6 col-12">
+			<input type="email" id="email" autocomplete="off" required="required" class="form-control" placeholder="Enter valid email" name="email"/>
+		</div>
+		<div class="col-lg-6 col-md-6 col-12">
+			<input type="text" autocomplete="off" required="required" maxlength="11" class="form-control" placeholder="Enter mobile number" name="mobile" id="mobile"/>
+		</div>
+		
+		<div class="col-lg-12 col-md-12 col-12">
+			<input type="password" id="pass" autocomplete="off" required="required" placeholder="Enter password" value="" class="form-control" name="pass" />
+		</div>
+		
+	 </div>
+	 
 
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="fa fa-phone fa-2x"></i>
-										</span>
-										<input type="text" autocomplete="off" required="required" maxlength="11" class="form-control" placeholder="Mobile number..." name="mobile" id="mobile"/>
-									</div>
+     <h4><i class="fa fa-bus"></i> &nbsp;&nbsp;Shipping <font style="color:green;">Details</font></h4>
+		 
+	<div class="row">
 
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="fa fa-lock fa-2x"></i>
-										</span>
-										<input type="password" id="pass" autocomplete="off" required="required" placeholder="Password..." class="form-control" name="pass" />
-									</div>
+			<div class="col-lg-6 col-md-6 col-12">
 
+				 <select name="country" id="country"  required="" class="form-control" onchange="print_state('state',this.selectedIndex);" data-trigger="focus" data-location="top-left" data-title="Please select your country"></select>
+			
+			</div>
+			
+			<div class="col-lg-6 col-md-6 col-12">
+					
+				<select name="state" id="state" required="required"  class="form-control" data-trigger="focus" data-location="top-left" data-title="Please select your state of origin"></select>
+		
+			</div>
+			
+			<div class="col-lg-12 col-md-12 col-12">
+					
+				<select name="city" id="city" required="required"  class="form-control">
+					<option value="">Select city / Area...</option>
+					<option value="Osogbo">Osogbo</option>
+				</select>
+		
+			</div>
+	</div>
+		
+			<textarea class="form-control" placeholder="Street Address"  name="street"></textarea>
+		
+        
+   
+			<input type="hidden" name="_token" value="<?php echo sha1(uniqid());?>"/>
+
+			
+		 
 
 			<?php
 				if(x_count("control_captcha","status='1'") > 0){
@@ -102,23 +142,27 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
 	?>" name="ref"  id="fpir" class="form-control"/>
 	</div>
 
-									<!-- If you want to add a checkbox to this form, uncomment this code -->
+		<!-- If you want to add a checkbox to this form, uncomment this code -->
 
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" required="required" name="checknow" value="<?php echo sha1(uniqid()).md5(uniqid());?>"/>
-											I agree to the <a href="#something">terms and conditions</a>.
-										</label>
-									</div>
-								</div>
+	<input type="checkbox" required="required" name="checknow" value="<?php echo sha1(uniqid()).md5(uniqid());?>"/>
+	I agree to the <a href="#something">terms and conditions</a>.
+			
+		
+		 </div>
+		 
+		 <div class="modal-footer text-center">
+			<button type="submit" class="btn btn-primary btn-round"><i class="fa fa-sign-in"></i> &nbsp;Get Started</button>
+		 </div>
+		 
+		 </form>
+		 
+		 <div style="margin-top:10pt;display:none;color:green;font-weight:bold;" id="gallery">
+			<img src="image/load.gif" class="img-responsive" style="width:80px;"/>
+		 </div>
+		 
+	</div>
 
-								<div class="modal-footer text-center">
-									<button type="submit" class="btn btn-primary btn-round"><i class="fa fa-sign-in"></i> &nbsp;Get Started</button>
-								</div>
-
-							</form>
-
-	<div style="margin-top:10pt;display:none;color:green;font-weight:bold;" id="gallery"><img src="image/load.gif" class="img-responsive" style="width:80px;"/></div>
+	
 	
 							<div class="social text-center">
 								<button class="btn btn-just-icon btn-round btn-twitter">
@@ -146,7 +190,8 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
 </div>
 <!--  End Modal -->
 
-
+<script type="text/javascript" src="food-processor/js/countries-nigeria.js"></script>
+<script language="javascript">print_country("country");</script> 
 <?php include_once("footextra.php");?>
 </body>
 </html>

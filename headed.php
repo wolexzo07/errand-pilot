@@ -3,6 +3,7 @@
 
   <title><?php echo $sitename." - ". $sitetitle;?></title>
   
+   
   <link rel="stylesheet" href="assets-new/web/assets/mobirise-icons2/mobirise2.css">
   <link rel="stylesheet" href="assets-new/web/assets/mobirise-icons/mobirise-icons.css">
   <link rel="stylesheet" href="assets-new/bootstrap/css/bootstrap.min.css">

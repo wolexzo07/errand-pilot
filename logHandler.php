@@ -3,8 +3,9 @@ $pageToken = md5(rand());
 include_once("finishit.php");
 xstart("0");
 if(x_validatesession("XCAPE_HACKS") && x_validatepost("blessme")){
-// xcape session hacks
+    // xcape session hacks
 	$xcapehacks = $_SESSION["XCAPE_HACKS"];
+	
 	if(!x_validatepost("$xcapehacks")){
 		finish("createAccount","Error:: Parameter was modified!.");
 	}
@@ -46,12 +47,17 @@ if(x_validatesession("XCAPE_HACKS") && x_validatepost("blessme")){
 
 	foreach(x_select("0","manageaccount","email='$email' AND pass='$hash' AND status='1' OR mobile='$email' AND pass='$hash' AND status='1'","1","name") as $key){
 		
-		$id = $key["id"];
-		$name = $key["name"];
-		$email = $key["email"];
-		$mobile = $key["mobile"];
-		$ref = $key["ref"];
-		$token = $key["token"];
+			$id = $key["id"];
+			$name = $key["name"];
+			$email = $key["email"];
+			$mobile = $key["mobile"];
+			$ref = $key["ref"];
+			$token = $key["token"];
+			
+			$country = $key["country"];
+			$state = $key["state"];
+			$area = $key["city"];
+			$info = $key["street"];
 		
 		}
 
@@ -62,7 +68,32 @@ if(x_validatesession("XCAPE_HACKS") && x_validatepost("blessme")){
 		$_SESSION["ER_TOKEN_2022_VI"] = $token;
 		$_SESSION["ER_REF_2022_VI"] = $ref;
 		
-		finish("manageProfile/manpage","0");
+		$_SESSION["XELOW_COMMERCE_NAME"] = $name;
+		$_SESSION["XELOW_COMMERCE_EMAIL"] = $email;
+		$_SESSION["XELOW_COMMERCE_USER_ID"] = $id;
+		$_SESSION["XELOW_COMMERCE_ADDRESS"] = "<address>$info</address><p>$area-$state state, $country</p>";
+		
+		
+		//validating the order id session started
+		include("errand_functions.php");
+		if(isset($_SESSION["XELOW_COMMERCE_ORDER_ID"])){
+			
+		}else{
+			$_SESSION["XELOW_COMMERCE_ORDER_ID"] = generate();
+			$_SESSION["XELOW_COMMERCE_ORDER_TOKEN"] = sha1(generate().$email).sha1(generate().$email).sha1(Date("Ydhis"));
+		}	
+		//validating the order id session ended
+		
+		
+		xstart("1");// session writing is now closed
+		
+		
+		//validating logon started
+		
+		include_once("food-processor/validatinglogon.php");
+		
+		//validating longon ended 
+		
 
 	}else{
 	//echo "<p class='hubmsg'>Failed to login! Try again.</p>";

@@ -1,16 +1,15 @@
  <?php include("validatePage.php");?>
 
+ <script src="js/fronts.js"></script>
  <form id="listedServices" method="POST" autocomplete="off">
-		
+ 
 		<div class="row">
-		
-			<div class="col-12 col-md-8 col-lg-8 mt-3">
-			
-				<select autocomplete="off" required class="form-control selected-fr" name="servicelist">
+			<div class="col-12 mt-3">
+				<select autocomplete="off" id="serveme" required class="form-control selected-fr" name="servicelist">
 				 <option value="">PLEASE CHOOSE YOUR SERVICE</option>
 				 <?php
 				 if(x_count("categories","status='1' LIMIT 500") > 0){
-					 foreach(x_select("0","categories","status='1'","500","department") as $slist){
+					 foreach(x_select("0","categories","status='1'","500","id") as $slist){
 						 $id = $slist["id"];
 						 $did = $slist["dept_id"];
 						 $list = $slist["department"];
@@ -35,13 +34,13 @@
 				 
 			</div>
 			
-			<div style="padding-left:0pt" class="col-12 col-md-4 col-lg-4">
+			<!---<div style="padding-left:0pt;display:none" class="col-12 col-md-4 col-lg-4">
 			
 				<div class="mbr-section-btn mt-3">
 					<button class="btn btn-warning display-4 btn-polish">GET STARTED</button>
 				</div>
 			
-			</div>
+			</div>---->
 			
 			<div class="col-12">
 			<div style="margin-top:10pt;display:none;color:green;font-weight:bold;" id="gallery"><img src="image/load.gif" class="img-responsive" style="width:80px;"/></div>

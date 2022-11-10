@@ -1,3 +1,49 @@
+.txt-top{
+	font-size:9pt;
+	font-weight:bold;
+	color:green;
+}
+.bank_name{
+	font-weight:bold;
+	font-size:10pt;
+}
+.acct_name{
+	font-size:10pt;
+}
+.listBanks{
+	display:none;
+} 
+#alert-msg{
+	color:green;
+	padding-bottom:10px;
+	display:none;
+}
+.paymentModal{
+	position:fixed;
+	top:14%;
+	left:10%;
+	right:10%;
+	width:80%;
+	height:70%;
+	background:white;
+	opacity:0.9;
+	z-index:1000;
+	box-shadow:10px 10px 10px lightgray;
+	-webkit-box-shadow:10px 10px 10px lightgray;
+	-moz-box-shadow:10px 10px 10px lightgray;
+	-o-box-shadow:10px 10px 10px lightgray;
+	-ms-box-shadow:10px 10px 10px lightgray;
+	overflow:auto;
+	padding-bottom:20px;
+	display:none;
+}
+.closePaymentModal{
+	padding:0px;
+}
+.paymentList{
+	padding-left:20pt;
+	padding-right:20pt;
+}
 .selected-fr {
 	padding-top:15px;
 	height:70px;
@@ -13,4 +59,19 @@
 
 .box-btn{
 	height:60px;
+}
+.sitem-title{
+	display:block;
+	font-weight:bold;
+}
+.stylecheck{
+	opacity:0.9;
+	text-align:center;
+	display:block;
+	background-color:white;
+	padding:10px;
+	font-size:12pt;
+	text-transform:uppercase;
+	font-weight:bold;
+	border-top:3px solid lightgray;
 }

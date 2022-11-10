@@ -3,7 +3,10 @@
 	box-shadow:2px 2px 1px lightgray;
 }
 .b-shift{
-	margin-top:10pt;
+	margin-top:20pt;
+}
+.carder{
+	box-shadow:2px 2px 1px lightgray;
 }
 .fa-sizer{
 	font-size:20pt;

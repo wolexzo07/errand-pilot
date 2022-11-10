@@ -93,7 +93,7 @@ return false;
 
 
 
-
+/************
 
 document.onkeydown = function (e) {
 	        if(e.which == "65"){
@@ -134,3 +134,4 @@ document.onkeydown = function (e) {
 							
 							}
 	}
+	****/

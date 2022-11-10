@@ -1,46 +1,32 @@
 <?php
-  session_start();
-  unset($_SESSION["IQGAMES_OS_2018_VISION"]);
-  unset($_SESSION["IQGAMES_BR_2018_VISION"]);
-  unset($_SESSION["IQGAMES_IP_2018_VISION"]);
-  unset($_SESSION["IQGAMES_ID_2018_VISION"]);
-  unset($_SESSION["IQGAMES_PHOTO_2018_VISION"]);
-  unset($_SESSION["IQGAMES_NAME_2018_VISION"]);
-  unset($_SESSION["IQGAMES_EMAIL_2018_VISION"]);
-  unset($_SESSION["IQGAMES_MOBILE_2018_VISION"]);
-  unset($_SESSION["IQGAMES_COUNTRY_2018_VISION"]);
-  unset($_SESSION["IQGAMES_STATE_2018_VISION"]);
-  unset($_SESSION["IQGAMES_GENDER_2018_VISION"]);
-  unset($_SESSION["IQGAMES_PLAN_2018_VISION"]);
-  unset($_SESSION["IQGAMES_TOKEN_2018_VISION"]);
-  unset($_SESSION["IQGAMES_REF_2018_VISION"]);
-  unset($_SESSION["IQGAMES_LL_2018_VISION"]);
-  unset($_SESSION["IQGAMES_RT_2018_VISION"]);
-  unset($_SESSION["IQGAMES_BN_2018_VISION"]);
-  unset($_SESSION["IQGAMES_ACN_2018_VISION"]);
-  unset($_SESSION["IQGAMES_ACNUMB_2018_VISION"]);
-  unset($_SESSION["IQGAMES_CUR_2018_VISION"]);
+	include("finishit.php");
+	xstart(0);
+	if(x_validatesession("shopping_cart") || x_validatesession("ER_ID_2022_VI")){
+	
+		if(x_validatesession("shopping_cart")){
+				unset($_SESSION["shopping_cart"]);		
+				unset($_SESSION["XELOW_COMMERCE_ORDER_ID"]);
+				unset($_SESSION["XELOW_COMMERCE_ORDER_TOKEN"]); 
+		}
 
-  if(isset($_SESSION["EXAM_STARTED_ALREADY"])){
-    unset($_SESSION["EXAM_STARTED_ALREADY"]);
-  }
-  if(isset($_SESSION['timeer'])){
-    unset($_SESSION['timeer']);
-  }
-
-  if(isset($_SESSION['GAME_DEMO_KEY'])){
-		unset($_SESSION['GAME_DEMO_KEY']);
+		if(x_validatesession("ER_ID_2022_VI")){
+				unset($_SESSION["ER_ID_2022_VI"]);
+				unset($_SESSION["ER_NAME_2022_VI"]);
+				unset($_SESSION["ER_EMAIL_2022_VI"]);
+				unset($_SESSION["ER_MOBILE_2022_VI"]);
+				unset($_SESSION["ER_TOKEN_2022_VI"]);
+				unset($_SESSION["ER_REF_2022_VI"]);
+				
+				unset($_SESSION["XELOW_COMMERCE_NAME"]);
+				unset($_SESSION["XELOW_COMMERCE_EMAIL"]);
+				unset($_SESSION["XELOW_COMMERCE_USER_ID"]);
+				unset($_SESSION["XELOW_COMMERCE_ADDRESS"]);
+			
+		}
+		
+		
+		
+		finish("./","You are logged successfully!");
 	}
-  if(isset($_SESSION["GAMES_TYPE_ID"])){
-    unset($_SESSION["GAMES_TYPE_ID"]);
-  }
-  if(isset($_SESSION["GAMES_ID"])){
-    unset($_SESSION["GAMES_ID"]);
-  }
-?>
-<script type="text/javascript">
-window.location="./iqlogin";
-</script>
-<?php
 
 ?>

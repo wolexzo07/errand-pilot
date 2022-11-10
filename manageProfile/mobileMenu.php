@@ -21,7 +21,7 @@
 		<li onclick="load('settings-base')" class="list-group-item"><i class="fa fa-cog"></i> &nbsp;&nbsp;Settings
 		<span class="pull-right badge" style="background:lightgray;color:white;"></span>
 		</li>
-		<li onclick="load('AccountLogout')" class="list-group-item"><i class="fa fa-sign-out"></i>&nbsp;&nbsp; Logout 
+		<li onclick="parent.location='../logout'" class="list-group-item"><i class="fa fa-sign-out"></i>&nbsp;&nbsp; Logout 
 		<span class="pull-right badge" style="background:lightgray;color:white;"></span>
 		</li>
 	
@@ -36,15 +36,15 @@
 	<div class="row">
 
 		<div onclick="load('top-up')" class="col-3 text-left">
-				<span class="btn btn-updated"><i class="fa fa-credit-card"></i><br/> Fund</span>
+				<span class="btn btn-updated"><i class="fa fa-credit-card"></i><br/> Fund wallet</span>
 		</div>
 		
 		<div class="col-3 text-left">
-				<span onclick="load('buy-btc')" class="btn btn-updated"><i class="fa fa-bitcoin"></i><br/>Buy</span>
+				<span onclick="load('buy-btc')" class="btn btn-updated"><i class="fa fa-shopping-cart"></i><br/>Place order</span>
 		</div>
 		
 		<div class="col-3 text-left">
-				<span onclick="load('sell-btc')" class="btn btn-updated"><i class="fa fa-money"></i><br/>Sell</span>
+				<span onclick="load('sell-btc')" class="btn btn-updated"><i class="fa fa-money"></i><br/>History</span>
 		</div>
 		<div class="col-3 text-left">
 				<span id="menuGist" class="btn btn-updated">

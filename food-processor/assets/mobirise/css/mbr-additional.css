@@ -1050,6 +1050,11 @@ a {
   padding-bottom: 7rem;
   background-image: url("../../../assets/images/mbr-1920x1080.jpg");
 }
+.ep-tfrmEfarwJ {
+  padding-top: 10rem;
+  padding-bottom: 7rem;
+  background-image: url("../../../assets/images/background3.jpg");
+}
 .cid-tfrmEfarwJ .mbr-fallback-image.disabled {
   display: none;
 }
@@ -1063,8 +1068,8 @@ a {
   top: 0;
 }
 .cid-tfrlLclnKi {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   background-color: #e6c63b;
 }
 .cid-tfrlLclnKi img,

@@ -1,0 +1,193 @@
+/*********************Errandpilot styling**************************/
+
+.stystatistics{
+	
+	color:white;
+	font-weight:bold;	
+
+}
+.fa-resizer{
+	font-size:50pt;
+	color:gray;
+}
+.dashstatistics{
+	font-size:20pt;
+}
+
+
+/*********************Errandpilot styling**************************/
+#contentgo{
+	box-shadow:1px 2px 1px 1px lightgray;
+	-moz-box-shadow:1px 2px 1px 1px lightgray;
+	-webkit-box-shadow:1px 2px 1px 1px lightgray;
+	-o-box-shadow:1px 2px 1px 1px lightgray;
+	-ms-box-shadow:1px 2px 1px 1px lightgray;
+	background-color:white;
+	padding-top:10pt;
+	padding-bottom:10pt;
+	opacity:0.9;
+}
+.sptext{
+	color:green;
+}
+.textnamex{
+	text-transform:capitalize;
+	font-weight:bold;
+	border:1px dashed lightgray;
+	padding:20px;
+}
+.enlarg{
+	font-size:150px;
+	/***border-radius:200%;
+	border:3px solid lightgray;
+	padding:20px;***/
+	color:lightgray;
+}
+.itemstyle{
+	color:green;
+}
+.stylecheck{
+	font-weight:bold;
+	margin-bottom:10pt;
+}
+.loadingimg{
+	width:150px;
+	border-radius:100%;
+	-moz-border-radius:100%;
+	-webkit-border-radius:100%;
+	-o-border-radius:100%;
+	-ms-border-radius:100%;
+}
+.changbase{
+	border-radius:20px;
+	text-transform:uppercase;
+}
+.fluidmass{
+	margin-top:55pt;
+}
+.gpbutton{
+	margin-top:10pt;
+}
+.gbbtn{
+	width:100%;
+	margin-bottom:5pt;
+	margin-left:0pt;
+	margin-right:5pt;
+}
+#gallery{
+	display:none;
+	margin-top:10pt;
+}
+.btnboss{
+	margin-top:20pt;
+}
+.styletextarea{
+	resize:none;
+}
+
+.mt-4{
+	margin-top:20pt;
+}
+.formloader{
+	border:0px;
+	margin-top:10pt;
+}
+.formspacer{
+	margin-top:20pt;
+}
+.roadme{
+	font-size:80pt;
+	color:lightgray;
+}
+.loadfa{
+	font-size:100pt;
+	color:lightgreen;
+}
+.txtlabel{
+	margin-top:10pt;
+}
+.panelstyle{
+	background-color:#663399;
+	color:white;
+}
+.imglog{
+	/**
+	border-radius:100%;
+	margin-top:20pt;
+	***/
+	border-radius:10px;
+	box-shadow:2px 2px 2px lightgray;
+	width:100px;
+	height:100px;
+}
+.cob{
+	color:purple;
+}
+.mainlog{
+	text-transform:uppercase;
+	font-size:14pt;
+}
+.uploadimg{
+	padding-bottom:40px;
+	margin-top:20pt;
+}
+.panelstyle1{
+	background-color:#00CC33;
+	color:white;
+}
+.pfoot{
+	color:;
+	background-color:white;
+}
+#headstyle{
+	background-color:white;
+}
+
+/*********************Obicommer styling**************************/
+.orderstyle{
+	font-weight:bold;
+}
+.cardboss{
+	border:1px solid lightgray;
+}
+.resizeimg{
+	width:160px;
+}
+.design{
+	padding-top:12pt;
+	letter-spacing:1pt;
+	font-weight:bold;
+}
+#panelb{
+	margin-top:30pt;
+}
+#loginbase , #registerbase{
+	display:none;
+}
+.actbutton{
+	margin-top:15px;
+	margin-bottom:15px;
+	font-size:17pt;
+	width:80%;
+	border-radius:30px;
+	-moz-border-radius:30px;
+	-webkit-border-radius:30px;
+	-o-border-radius:30px;
+	-ms-border-radius:30px;
+}
+#galleryshow,#galleryreg{
+	display:none;
+}
+.moveimg{
+	margin-left:20pt;
+}
+.fup{
+	font-size:40pt;
+}
+.roundit{
+	border-radius:30px;
+	-moz-border-radius:30px;
+	-webkit-border-radius:30px;
+	-o-border-radius:30px;
+	-ms-border-radius:30px;
+}

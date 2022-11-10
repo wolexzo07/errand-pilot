@@ -1,5 +1,12 @@
 body.renew{
-	background-image:url("../image/bg.jpg")
+	background-image:url("../image/bg.jpg");
+	background-attachment:fixed;
+}
+.padd-form{
+	padding-top:0pt;
+	padding-bottom:15pt;
+	padding-right:15pt;
+	padding-left:15pt;
 }
 .boxsh{
 	opacity:0.9;
@@ -11,9 +18,7 @@ body.renew{
 	width:150px;
 	margin-bottom:20pt;
 }
-body{
-	background-attachment:fixed;
-}
+
 .fr{
 margin-top:10pt;
 margin-bottom:10pt;

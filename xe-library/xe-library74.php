@@ -1008,25 +1008,44 @@ function xstart($pick){
 	}
 	
 
-	#include and require
 	function xreq($val){
-		if(empty($val)){
-			x_print("File name cannot be empty!");
-		exit();
+		    if(empty($val)){	
+				x_print("Error:File name cannot be empty!");
+			}elseif(!file_exists($val)){
+				x_print("Error:File required does not exist!");
 			}else{
 				return require_once($val);
 			}
-	
 		}
 		
-		function xinc($val){
-		if(empty($val)){
-			x_print("File name cannot be empty!");
-		exit();
+	function xinc($val){
+			if(empty($val)){	
+				x_print("Error:File name cannot be empty!");
+			}elseif(!file_exists($val)){
+				x_print("Error:File included does not exist!");
 			}else{
 				return include_once($val);
 			}
-	
+		}
+		
+	function x_req($val){
+		if(empty($val)){	
+				x_print("Error:File name cannot be empty!");
+			}elseif(!file_exists($val)){
+				x_print("Error:File required does not exist!");
+			}else{
+				return require($val);
+			}
+		}
+		
+	function x_inc($val){
+		if(empty($val)){	
+				x_print("Error:File name cannot be empty!");
+			}elseif(!file_exists($val)){
+				x_print("Error:File included does not exist!");
+			}else{
+				return include($val);
+			}
 		}
 		
 		function xtitle($val){
@@ -1039,19 +1058,27 @@ function xstart($pick){
 			}
 			
 function x_trunc($str,$start,$stop){
-$len = strlen($str);
-if(!is_numeric($start) || !is_numeric($stop)){
-return "Error:inproper usage of x_trunc(str,start,stop)";
-}else{
+	$len = strlen($str);
+	if(!is_numeric($start) || !is_numeric($stop)){
+		
+	return "Error:inproper usage of x_trunc(str,start,stop)";
+	
+	}else{
 
-if($len > $start){
-return substr($str,$start,$stop)."...";
-}elseif($len < $start){
-return substr($str,$start,$stop);
-}else{
-return $start;
-}
-}
+	if($len > $stop){
+		
+	  return substr($str,$start,$stop)."...";
+	  
+	}elseif(($len < $stop) || ($len == $stop)){
+		
+	  return substr($str,$start,$stop);
+	  
+	}else{
+		
+	 return $start;
+	 
+	}
+  }
 }
 
 function x_vert($str,$wrap){
@@ -1803,6 +1830,9 @@ include("payment_functions.php");
 include("domingos_sp_functions.php");
 // Include the iuosite functions
 include("iuofunction.php");
+// Mobile Functions
 include("mobilefunction.php");
+//Errand Pilot functions
+include("errandpilot_functions.php");
 
 ?>

@@ -12,12 +12,15 @@ if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
 	exit();
 }
 $_SESSION["PAGE_TOKEN"] = sha1($pageToken).md5($pageToken);
+$userToken = $_SESSION["ER_TOKEN_2022_VI"];
+$user_id = $_SESSION["ER_ID_2022_VI"];
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <?php include("metaDetails.php");?>
-        <title><?php x_print($sitename);?> Dashboard :: Welcome <?php x_seprint("ER_NAME_2022_VI");?></title>
+        <title>
+		<?php x_print($sitename);?> Dashboard :: Welcome <?php x_seprint("ER_NAME_2022_VI");?></title>
 		<?php include("topLibrary.php");?>
     </head>
     <body>
@@ -41,7 +44,9 @@ $_SESSION["PAGE_TOKEN"] = sha1($pageToken).md5($pageToken);
                             </button>
 							
                         </div>
-						<button style="float:right;" class="btn btn-success">NGN 2,000,000</button>
+						<button style="float:right;" class="btn btn-primary">
+						NGN <?php print number_format(epbal($userToken,"w"),2);?>
+						</button>
                         
 
                     </div>
@@ -51,20 +56,19 @@ $_SESSION["PAGE_TOKEN"] = sha1($pageToken).md5($pageToken);
 				
 				<div class="container-fluid">
 				
-					<div class="row">
 					
-						<?php include_once("dashboardStatistics.php")?>
-						<?php include_once("timeline-imported.php")?>
-						
-					</div>
-				
-				</div>
-				
-				<!---------------Just make the content work---------------->
+					
+						<!---------------Just make the content work---------------->
 			<div style="display:none;position:fixed;top:20%;left:37%;z-index:10000" id="loadTemporal" class="text-center"></div>
 			<div style="background-image:url();background-attachment:fixed;background-color:transparent;padding-left:0pt;padding-right:0pt;" class="container-fluid" id="calculate"></div>
 			
 			<!---------------Just make the content work---------------->
+						
+					
+				
+				</div>
+				
+				
 				
             </div>
 			
@@ -77,22 +81,21 @@ $_SESSION["PAGE_TOKEN"] = sha1($pageToken).md5($pageToken);
 		include_once("mobileMenu.php");
 	?>
 
-     <script src="js/jquery-3.5.1.min.js"></script>
-        <!-- Bootstrap Js CDN -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- jQuery Custom Scroller CDN -->
-        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+     
 
          <script type="text/javascript">
              $(document).ready(function () {
+				 load("homedash");
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                  });
 				 $("#menuGist").click(function(){
 					$(".menuTag").toggle("slow");
 				});
+				
              });
          </script>
 		 
+<?php include("manageChart.php");?>	 
     </body>
 </html>

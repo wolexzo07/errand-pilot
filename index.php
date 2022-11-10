@@ -17,19 +17,16 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
 <head>
   <?php include_once("headed.php");?>
 </head>
-<body>
+<body onload="openFullscreen()">
   
   <section data-bs-version="5.1" class="menu menu2 cid-teH97O5qIj" once="menu" id="menu2-6">
-    
+  
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    
                         <img src="assets-new/images/logo8-309x115.png" alt="EP Logo" style="height: 3.6rem;">
-                    
                 </span>
-                
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
@@ -58,6 +55,7 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
             </div>
         </div>
     </nav>
+	
 </section>
 
 
@@ -402,6 +400,29 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
 			?>
 
 <?php include("footer-pager.php");?>
+<script>
+var elem = document.documentElement;
+
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+  }
+}
+</script>
   
 </body>
 </html>
