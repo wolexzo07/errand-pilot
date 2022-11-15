@@ -148,6 +148,7 @@ $timer = x_curtime("0","1");
  <script src="js/cartProcessor.js" type="text/javascript"></script>
  <script>
 	  $(document).ready(function(){
+		  retrieve_balance();
 		  finalize_carting();// print current items in-cart
 		  load_all(); //Push result to db
 		  $("#playsmart").hide();

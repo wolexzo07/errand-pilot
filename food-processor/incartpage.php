@@ -99,12 +99,11 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
  <script src="assets/theme/js/script.js"></script>  
  
  <script src="js/cartProcessor.js" type="text/javascript"></script>
- 
- <script>load_cart_data()</script>
   <script>
 	  $(document).ready(function(){
+		retrieve_balance();
+		load_cart_data();
 		  $("#playsmart").hide();
-		  
 		  $(".closeboss").click(function(){
 		  $(".changbase").hide("slow");
 			});	

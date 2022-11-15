@@ -1,0 +1,9 @@
+  $.ajax({
+					url: "payment_verify?reference="+ref+"&optcmd="+optcmd,
+					method: 'GET',
+					success: function (response) {
+					// the transaction status is in response.data.status
+					},
+					error: function(){} 
+
+				});

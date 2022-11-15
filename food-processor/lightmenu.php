@@ -48,17 +48,8 @@
 						</span> 
 
                     </a>
-					<?php
-					if(x_validatesession("ER_ID_2022_VI")){
-						$token = x_clean($_SESSION["ER_TOKEN_2022_VI"]);
-						$opt = "w";
-						?>
-						<a class="btn btn-sm btn-primary display-4" href="#">
-						NGN <?php echo number_format(epbal($token,$opt),0);?></a>
-						<?php
-						
-					}
-					?>
+					<a class="btn btn-sm btn-primary display-4 " id="x_get_balance" href="#">
+					</a>
 					
 					
                 </div>

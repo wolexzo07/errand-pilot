@@ -1,12 +1,9 @@
 <?php
-include_once("../finishit.php");
-xstart("0");
+if(isset($pageExtension)){
 
-status=successful&tx_ref=1103093557-2996-MVTOADXWPH&transaction_id=3917732
-if(x_validateget("status") && x_validateget("tx_ref") && x_validateget("transaction_id")){
-	
-}
-            $curl = curl_init();
+	if(x_validateget("status") && x_validateget("tx_ref") && x_validateget("transaction_id")){
+				//status=successful&tx_ref=1103093557-2996-MVTOADXWPH&transaction_id=3917732
+			$curl = curl_init();
             curl_setopt_array($curl, array(
                 CURLOPT_URL => "https://api.flutterwave.com/v3/transactions/{$txid}/verify",
                 CURLOPT_RETURNTRANSFER => true,
@@ -38,15 +35,17 @@ if(x_validateget("status") && x_validateget("tx_ref") && x_validateget("transact
 				  $tx_id = $res->data->id; // Our transaction id from flutters
 				  $amountPaid = $res->data->charged_amount;
 				  $amountToPay = 5600;
-                
-                if($amountPaid >= $amountToPay){
-                    echo 'Payment successful';    
-                }
-                else{
-                    echo 'Fraudulent transaction detected';
-                }
+					
+					if($amountPaid >= $amountToPay){
+						echo 'Payment successful';    
+					}
+					else{
+						echo 'Fraudulent transaction detected';
+					}
               }
               else{
                   echo 'Payment Failed!';
               }
-?>
+	}
+            
+}?>

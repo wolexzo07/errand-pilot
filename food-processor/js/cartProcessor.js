@@ -1,3 +1,15 @@
+function retrieve_balance()
+		{
+			$.ajax({
+			url:"getbalance",
+			method:"GET",
+			success:function(data)
+			{
+				$('#x_get_balance').html(data);	
+			}
+		});	
+		}
+		
 function finalize_carting()
 		{
 			$.ajax({

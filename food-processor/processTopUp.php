@@ -1,3 +1,25 @@
+<!----<script src="js/cartProcessor.js"></script>---->
+<script>
+function autoverify_payment(ref,optcmd,amount){
+	$.ajax({
+		url: "payment_verify?ref="+ref+"&optcmd="+optcmd+"&total="+amount,
+		type: "GET",
+		success: function(data){
+			retrieve_balance();
+			$("#payModalProcessor").hide();
+			$("#alert-msg").show(500);
+			$("#alert-msg").html(data);
+			setTimeout(function(){
+				$(".closePaymentModal").click();
+			},3000);
+		},
+		error: function(){
+			$("#alert-msg").show(500);
+			$("#alert-msg").html("<p class='alert-txt'>Callbacks failed to initialize!</p>");
+		} 	        
+	});	
+}
+</script>
 <?php
 include_once("../finishit.php");
 xstart("0");
@@ -25,15 +47,16 @@ if(x_validatesession("XCAPE_HACKS") && x_validatesession("ER_ID_2022_VI") && x_v
 		
 		$skey = x_getsingle("SELECT secretkey FROM paymentkeys WHERE company='paystack' AND status='1' LIMIT 1","paymentkeys WHERE company='paystack' AND status='1' LIMIT 1","secretkey"); // Getting secret key
 		
+		$fee = x_pstkfees($amount);
 		?>
-
+ 
 <script type="text/javascript">
 function payWithPaystack(){
         var handler = PaystackPop.setup({
 		  currency: 'NGN', //This can only be either NGN or USD
           key: '<?php echo $pkey;?>',
           email: "<?php echo $email;?>",
-          amount: <?php echo $amount*100;?>, 
+          amount: <?php echo ($amount+$fee)*100;?>, // Amount + gateway charges
           ref: "<?php echo $orderid;?>",
           metadata: {
              custom_fields: [
@@ -46,18 +69,14 @@ function payWithPaystack(){
           },
           callback: function(response){
     		  var ref = response.reference;
-			    $.ajax({
-					url: 'payment_verify_pstk?reference='+ ref,
-					method: 'GET',
-					success: function (response) {
-					// the transaction status is in response.data.status
-					},
-					error: function(){} 
-
-				});
+    		  var optcmd = "paystack";
+    		  var amt = <?php echo $amount;?>;
+			  //autoverify_payment(ref,optcmd,amount);
+			  var amount = parseFloat(amt);
+			   autoverify_payment(ref,optcmd,amount);	
           },
           onClose: function(){
-
+			
           }
         });
         handler.openIframe();
@@ -74,7 +93,6 @@ function payWithPaystack(){
 		
 		?>
 		<script>
-
 		  function flutterwavePayment() {
 			const modal = FlutterwaveCheckout({
 			  public_key: "<?php echo $fpkey;?>",
@@ -100,7 +118,13 @@ function payWithPaystack(){
 			  callback: function(payment) {
 			   // Send AJAX verification request to backend
 			   //verifyTransactionOnBackend(payment.id);
-			   modal.close();
+			   var ref = payment.id;
+    		   var optcmd = "flutter";
+			   var amt = <?php echo $amount;?>;
+			   var amount = parseFloat(amt);
+			   autoverify_payment(ref,optcmd,amount);
+			   
+			   //modal.close();
 			 },
 			   onclose: function(incomplete) {
 				  if (incomplete === true) {
