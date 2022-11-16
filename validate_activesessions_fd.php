@@ -8,11 +8,12 @@ if(x_validatesession("XCAPE_HACKS") && x_validatesession("ER_ID_2022_VI")){
 		
 		//validating the order id session started
 		
-		if(x_validatesession("XELOW_COMMERCE_ORDER_ID") || x_validatesession("XELOW_COMMERCE_ORDER_TOKEN")){}else{
+		if(x_validatesession("XELOW_COMMERCE_ORDER_ID") && x_validatesession("XELOW_COMMERCE_ORDER_TOKEN")){}else{
 			$_SESSION["XELOW_COMMERCE_ORDER_ID"] = x_generated($email);
-			$_SESSION["XELOW_COMMERCE_ORDER_TOKEN"] = sha1(x_generated($email).$email).sha1(generate().$email).sha1(Date("Ydhis"));
+			$_SESSION["XELOW_COMMERCE_ORDER_TOKEN"] = sha1(x_generated($email).$email).sha1(x_generated($email).$email).sha1(Date("Ydhis"));
 		}	
 		//xstart("1");
+		$commp = "yes";
 		include("food-processor/validatinglogon.php");//validating logon started
 }else{
 	finish("../loginAccount?cmd=CompleteFoodOrder","0");

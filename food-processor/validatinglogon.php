@@ -7,7 +7,11 @@ foreach(x_session("shopping_cart") as $keys => $values)
 	$total_array =  array_sum($quantity);
 	
 		if($total_array > 0){
-			finish("food-processor/final_checkout_n","0");
+			if(isset($commp)){
+				finish("final_checkout_n","0");
+			}else{
+				finish("food-processor/final_checkout_n","0");
+			}
 		}else{
 			finish("./","Cart empty!");
 		}
