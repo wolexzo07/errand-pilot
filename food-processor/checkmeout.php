@@ -110,7 +110,7 @@ exit();
 		
 		//finalizing transaction
 		
-		x_insert("total_incart,address,order_id,user_id,fullname,total_amount,order_date,product_token","final_checkout","'$final_cart','$address','$orderid','$userid','$fname','$final_total','$timer','$token'","&nbsp;","failed final_checkout @ #$counting");	
+		x_insert("total_incart,address,order_id,user_id,fullname,shopped_amount,order_date,product_token","final_checkout","'$final_cart','$address','$orderid','$userid','$fname','$final_total','$timer','$token'","&nbsp;","failed final_checkout @ #$counting");	
 					}
 				
 			}else{

@@ -1,18 +1,27 @@
 <?php
-$pageToken = md5(rand());
-include_once("../finishit.php");
-include_once("../siteinfo.php");
-xstart("0");
-//include_once("../refcoder.php");
-if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
+	$pageToken = md5(rand());
+	include_once("../finishit.php");
+	include_once("../siteinfo.php");
+	xstart("0");
+	//include_once("../refcoder.php");
+	if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
 
-	finish("../notify/maintenance","Access denied!");
-	exit();
-}
-$_SESSION["XCAPE_HACKS"] = md5(rand());
+		finish("../notify/maintenance","Access denied!");
+		exit();
+	}
+	// Redirection from Homepage Handler
 
-// Redirection from Homepage Handler
-//include("pageRedirection.php");
+		//include("pageRedirection.php");
+		
+	// Handling session hacks
+
+	   include("../session_hacks_bypass.php");
+	   
+	// Session Cubbing going back to previous page 
+	
+	if(!x_validatesession("EP_CUB_CARTEDIT")){
+		$_SESSION["EP_CUB_CARTEDIT"] = sha1("yes".DATE("YmdHis"));
+	}
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +29,8 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
 <head>
 <?php include_once("headPart.php");?>
 <link rel="stylesheet" href="../css/font-awesome.min.css"/>
+<link rel="stylesheet" href="../css/Toast.min.css"/>
+<link rel="stylesheet" href="../css/toastify.min.css"/>
 </head>
 <body>
   
@@ -90,7 +101,7 @@ $timer = x_curtime("0","1");
 	
 ?>
 
-<button style="margin-left:0pt;" onclick="" class="btn btn-sm btn-warning"><i class="fa fa-money"></i> &nbsp;&nbsp;PAY NOW => NGN <?php echo number_format($final_amount);?></button>
+<button style="margin-left:0pt;" id="lastPayment" class="btn btn-sm btn-warning"><i class="fa fa-money"></i> &nbsp;&nbsp;PAY NOW => NGN <?php echo number_format($final_amount);?></button>
 
 	<?php
 	if(x_validatesession("ER_ID_2022_VI")){
@@ -146,11 +157,41 @@ $timer = x_curtime("0","1");
  <script src="assets/theme/js/script.js"></script>  
  <script type="text/javascript" src="js/access.js"></script>
  <script src="js/cartProcessor.js" type="text/javascript"></script>
+ <script src="../js/Toast.min.js" type="text/javascript"></script>
+ <script src="../js/toastify-js.js" type="text/javascript"></script>
+ <script src="js/animate-page.js" type="text/javascript"></script>
  <script>
+
 	  $(document).ready(function(){
-		  retrieve_balance();
+		  retrieve_balance(); // Getting balance
 		  finalize_carting();// print current items in-cart
-		  load_all(); //Push result to db
+		  // processing finals
+		  $("#lastPayment").click(function(){
+			  <?php
+			  // ensuring that wallet balance
+				$token = x_clean($_SESSION["ER_TOKEN_2022_VI"]);
+				$user_hash_token = eptoks($token); // hashed user token
+				$curbal = x_getsingle("SELECT wallet_balance FROM ep_wallets WHERE utoken='$user_hash_token' LIMIT 1","ep_wallets WHERE utoken='$user_hash_token' LIMIT 1","wallet_balance");// current balance
+				// checking for sufficient balance
+				if($curbal > $final_amount){
+					?>
+				load_all();    
+					<?php
+				}
+			  ?>
+			  var token_this = "<?php echo $_SESSION['XCAPE_HACKS'];?>";
+			  $.ajax({
+				  url:"Finalize_cartcheckout",
+				  method:"GET",
+				  data:{total_final:<?php echo $final_amount;?>,shipping_fee:<?php echo $shipping_fee;?>,service_fee:<?php echo $service_fee;?>,shopped_amount:<?php echo $totalnow;?>,_token:token_this},
+				  success:function(data){
+					  $("#come").html(data);
+					   retrieve_balance(); // Getting balance
+				  },
+				  error:function(){}
+			  })
+		  });
+		  
 		  $("#playsmart").hide();
 		  $(".t-dates").hide();
 		  $(".t-details").hide();

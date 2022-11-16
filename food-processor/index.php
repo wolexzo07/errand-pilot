@@ -8,11 +8,11 @@ if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
 
 	finish("../notify/maintenance","Access denied!");
 	exit();
-}
-$_SESSION["XCAPE_HACKS"] = md5(rand());
-
+}	
 // Redirection from Homepage Handler
 include("pageRedirection.php");
+// Handling session hacks
+include("../session_hacks_bypass.php");
 ?>
 
 <!DOCTYPE html>

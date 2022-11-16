@@ -1,25 +1,3 @@
-<!----<script src="js/cartProcessor.js"></script>---->
-<script>
-function autoverify_payment(ref,optcmd,amount){
-	$.ajax({
-		url: "payment_verify?ref="+ref+"&optcmd="+optcmd+"&total="+amount,
-		type: "GET",
-		success: function(data){
-			retrieve_balance();
-			$("#payModalProcessor").hide();
-			$("#alert-msg").show(500);
-			$("#alert-msg").html(data);
-			setTimeout(function(){
-				$(".closePaymentModal").click();
-			},3000);
-		},
-		error: function(){
-			$("#alert-msg").show(500);
-			$("#alert-msg").html("<p class='alert-txt'>Callbacks failed to initialize!</p>");
-		} 	        
-	});	
-}
-</script>
 <?php
 include_once("../finishit.php");
 xstart("0");
@@ -34,7 +12,29 @@ if(x_validatesession("XCAPE_HACKS") && x_validatesession("ER_ID_2022_VI") && x_v
 	$name = x_clean($_SESSION["ER_NAME_2022_VI"]); // Name
 	
 	$orderid = x_clean($_SESSION["XELOW_COMMERCE_ORDER_ID"]); // order unique id
-	
+	?>
+	<script>
+	function autoverify_payment(ref,optcmd,amount){
+		$.ajax({
+			url: "payment_verify?ref="+ref+"&optcmd="+optcmd+"&total="+amount,
+			type: "GET",
+			success: function(data){
+				retrieve_balance(); // referesh balance
+				$("#payModalProcessor").hide();
+				$("#alert-msg").show(500);
+				$("#alert-msg").html(data);
+				setTimeout(function(){
+					$(".closePaymentModal").click();
+				},3000);
+			},
+			error: function(){
+				$("#alert-msg").show(500);
+				$("#alert-msg").html("<p class='alert-txt'>Callbacks failed to initialize!</p>");
+			} 	        
+		});	
+	}
+	</script>
+	<?php
 	if($banks == "mbt"){ // Manual transfer
 	
 		$date = x_clean(x_post("date")); // transaction date

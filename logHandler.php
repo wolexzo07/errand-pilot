@@ -75,7 +75,7 @@ if(x_validatesession("XCAPE_HACKS") && x_validatepost("blessme")){
 		
 		
 		//validating the order id session started
-		include("errand_functions.php");
+
 		if(isset($_SESSION["XELOW_COMMERCE_ORDER_ID"])){
 			
 		}else{

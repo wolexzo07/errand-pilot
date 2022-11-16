@@ -9,10 +9,25 @@ if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
 	finish("../notify/maintenance","Access denied!");
 	exit();
 }
-$_SESSION["XCAPE_HACKS"] = md5(rand());
-
 // Redirection from Homepage Handler
-//include("pageRedirection.php");
+
+	//include("pageRedirection.php");
+	
+// Handling session hacks
+
+   include("../session_hacks_bypass.php");
+
+// Curbing Re-Editing of Cart
+
+if(x_validatesession("EP_CUB_CARTEDIT")){
+	?>
+	<script>
+		alert("You cannot re-edit cart");
+		window.location="final_checkout_n?hash=<?php echo $_SESSION['XCAPE_HACKS'];?>";
+	</script>
+	<?php
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -87,6 +102,7 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
 	
 </section>
 
+<div id="response-back"></div>
 
 <section class="display-7" id="playsmart" style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;"><a href="https://mobiri.se/" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="Mobirise" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a><p style="margin: 0;text-align: center;" class="display-7">xelowgc &#8204;</p><a style="z-index:1" href="https://mobirise.com/html-builder.html">Xelowgc</a></section>
 
@@ -111,7 +127,13 @@ $_SESSION["XCAPE_HACKS"] = md5(rand());
 	  function verifychanges(){
 		var openwin = confirm("YOU CANNOT EDIT YOUR CART AFTER CLICKING OK");
 		if(openwin == true){
-			window.location="../createAccount?cmd=CompleteFoodOrder";
+			$.ajax({
+				url:"../validate_activesessions_fd",
+				method:"GET",
+				success:function(data){
+					$("#response-back").html(data);
+				},
+			})
 			return true;
 		}else{
 			return false;

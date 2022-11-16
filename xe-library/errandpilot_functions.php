@@ -19,6 +19,14 @@
 			return $dater."-".$hash."-".$add;
 		}
 		
+		function x_generated($param){
+			$email = $param;
+			$dater = DATE("mdHis"); 
+			$hash = substr(strtoupper(sha1($param)),0,4);
+			$add = strtoupper(xrands(10));
+			return $dater."-".$hash."-".$add;
+		}
+		
 		function eptoks($str){
 			return sha1($str).md5($str);
 		}
