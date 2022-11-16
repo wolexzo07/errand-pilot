@@ -98,7 +98,12 @@ $timer = x_curtime("0","1");
 			$shipping_fee = 500;
 			$service_fee = 100;
 			$final_amount = $totalnow + $shipping_fee + $service_fee;
-	
+			
+			// storing total amount in session
+			if(!x_validatesession("FINAL_TOTAL_AMOUNT")){
+				$_SESSION["FINAL_TOTAL_AMOUNT"] = $final_amount;
+			}
+			
 ?>
 
 <button style="margin-left:0pt;" id="lastPayment" class="btn btn-sm btn-warning"><i class="fa fa-money"></i> &nbsp;&nbsp;PAY NOW => NGN <?php echo number_format($final_amount);?></button>
@@ -165,20 +170,8 @@ $timer = x_curtime("0","1");
 	  $(document).ready(function(){
 		  retrieve_balance(); // Getting balance
 		  finalize_carting();// print current items in-cart
-		  // processing finals
-		  $("#lastPayment").click(function(){
-			  <?php
-			  // ensuring that wallet balance
-				$token = x_clean($_SESSION["ER_TOKEN_2022_VI"]);
-				$user_hash_token = eptoks($token); // hashed user token
-				$curbal = x_getsingle("SELECT wallet_balance FROM ep_wallets WHERE utoken='$user_hash_token' LIMIT 1","ep_wallets WHERE utoken='$user_hash_token' LIMIT 1","wallet_balance");// current balance
-				// checking for sufficient balance
-				if($curbal > $final_amount){
-					?>
-				load_all();    
-					<?php
-				}
-			  ?>
+		  $("#lastPayment").click(function(){// processing finals
+			  load_all(); 
 			  var token_this = "<?php echo $_SESSION['XCAPE_HACKS'];?>";
 			  $.ajax({
 				  url:"Finalize_cartcheckout",
@@ -192,6 +185,11 @@ $timer = x_curtime("0","1");
 			  })
 		  });
 		  
+		  //Change the cart content
+		  $("#x_get_content").html("<i class='fa fa-dashboard'></i>&nbsp; Dashboard").attr("href","../manageProfile/manpage");
+		  //hide social icons
+		  $(".icons-menu").hide();
+		  // General
 		  $("#playsmart").hide();
 		  $(".t-dates").hide();
 		  $(".t-details").hide();

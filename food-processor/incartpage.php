@@ -119,26 +119,31 @@ if(x_validatesession("EP_CUB_CARTEDIT")){
 	  $(document).ready(function(){
 		retrieve_balance();
 		load_cart_data();
-		  $("#playsmart").hide();
-		  $(".closeboss").click(function(){
-		  $(".changbase").hide("slow");
-			});	
+	    $("#playsmart").hide();
+	    $(".closeboss").click(function(){
+	    $(".changbase").hide("slow");
+		});	
+		   //Change the cart content
+		  $("#x_get_content").html("<i class='fa fa-dashboard'></i>&nbsp; Dashboard").attr("href","../manageProfile/manpage");
+		  //hide social icons
+		  $(".icons-menu").hide();
 	  });
-	  function verifychanges(){
-		var openwin = confirm("YOU CANNOT EDIT YOUR CART AFTER CLICKING OK");
-		if(openwin == true){
-			$.ajax({
-				url:"../validate_activesessions_fd",
-				method:"GET",
-				success:function(data){
-					$("#response-back").html(data);
-				},
-			})
-			return true;
-		}else{
-			return false;
+		  // General
+		  function verifychanges(){
+			var openwin = confirm("YOU CANNOT EDIT YOUR CART AFTER CLICKING OK");
+			if(openwin == true){
+				$.ajax({
+					url:"../validate_activesessions_fd",
+					method:"GET",
+					success:function(data){
+						$("#response-back").html(data);
+					},
+				})
+				return true;
+			}else{
+				return false;
+			}
 		}
-	}
   </script>
   
 </body>

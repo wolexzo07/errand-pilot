@@ -35,7 +35,7 @@
                 </div>
                 <div class="navbar-buttons mbr-section-btn">
 				
-                    <a class="btn btn-sm btn-warning display-4" href="incartpage"><i class="fa fa-shopping-cart"></i> &nbsp;
+                    <a class="btn btn-sm btn-warning display-4" id="x_get_content" href=""><i class="fa fa-shopping-cart"></i> &nbsp;
 						<span class="loadcartvalue">
 							<?php 
 							if(x_validatesession("shopping_cart")){

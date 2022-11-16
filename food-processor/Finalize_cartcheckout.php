@@ -81,10 +81,11 @@ if(x_validatesession("XCAPE_HACKS") && x_validatesession("ER_ID_2022_VI") && x_v
 						x_updated("ep_wallets","utoken='$user_hash_token'","wallet_balance='$newbalance'","<script>finalizeDeal();</script>","<script>showalert('Failed to update wallet!');</script>");
 					
 						// unset session cart
-						unset($_SESSION["shopping_cart"]);
-						unset($_SESSION["XELOW_COMMERCE_ORDER_ID"]);
-						unset($_SESSION["XELOW_COMMERCE_ORDER_TOKEN"]);
-						unset($_SESSION["EP_CUB_CARTEDIT"]);
+						unset($_SESSION["shopping_cart"]); // Empty  all the cart
+						unset($_SESSION["XELOW_COMMERCE_ORDER_ID"]);// removing order id
+						unset($_SESSION["XELOW_COMMERCE_ORDER_TOKEN"]);// removing order token
+						unset($_SESSION["EP_CUB_CARTEDIT"]);// removing the re-edit stopper
+						unset($_SESSION["FINAL_TOTAL_AMOUNT"]); // removing total incart amount
 						
 					}
 		

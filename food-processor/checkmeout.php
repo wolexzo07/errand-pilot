@@ -5,9 +5,13 @@ if(!x_validatesession("XELOW_COMMERCE_ORDER_ID")){
 x_print("<p>Session inaction! Please login or register before continue</p>");
 exit();
 }else{
-	
-	if(x_validatesession("shopping_cart"))
-			{
+	if(x_validatesession("shopping_cart") && x_validatesession("FINAL_TOTAL_AMOUNT") && x_validatesession("ER_TOKEN_2022_VI")){
+		
+				// validating enough balance before commit
+				$token = x_clean($_SESSION["ER_TOKEN_2022_VI"]);
+				$final_amtsession = x_clean($_SESSION["FINAL_TOTAL_AMOUNT"]);// total in-cart amt
+				$user_hash_token = eptoks($token); // hashed user token
+				$curbal = x_getsingle("SELECT wallet_balance FROM ep_wallets WHERE utoken='$user_hash_token' LIMIT 1","ep_wallets WHERE utoken='$user_hash_token' LIMIT 1","wallet_balance");// current balance
 				
 				//getting parameters ready
 				
@@ -82,13 +86,13 @@ exit();
 				if((x_count("final_checkout","order_id='$orderid' AND product_token='$token' LIMIT 1") > 0) || (x_count("order_placed","order_id='$orderid' AND product_token='$token' LIMIT 1") > 0)){
 					//x_print("Order record in the database already");
 				}else{
+				// checking for sufficient balance
 				
-				
-				foreach($_SESSION["shopping_cart"] as $keys => $values)
-				{
-					$counting++;
+				if($curbal > $final_amtsession){
+
+				foreach($_SESSION["shopping_cart"] as $keys => $values){
+				$counting++;
 				//x-modified started
-				
 				$product_id = x_clean($values["product_id"]);
 				$product_name = x_clean($values["product_name"]);
 				$product_quantity = x_clean($values["product_quantity"]);
@@ -97,20 +101,24 @@ exit();
 				
 				$total_last[] = $total;
 				$totalincart[] = $product_quantity;
-			//initializing transaction
-			x_insert("user_id,unit_price,order_id,product_token,product_id,product_name,product_quantity,total_amount,order_date","order_placed","'$userid','$product_price','$orderid','$token','$product_id','$product_name','$product_quantity','$total','$timer'","&nbsp;","failed @ #$counting");
+				//initializing transaction
+				 x_insert("user_id,unit_price,order_id,product_token,product_id,product_name,product_quantity,total_amount,order_date","order_placed","'$userid','$product_price','$orderid','$token','$product_id','$product_name','$product_quantity','$total','$timer'","&nbsp;","failed @ #$counting");
 
-				//x-modified ended
-				}
-		$final_total = array_sum($total_last);
-		$final_cart = array_sum($totalincart);
-		//uploading payment details
-		
-		x_insert("user_id,order_id,amount_paid,product_token","payment_details","'$userid','$orderid','$final_total','$token'","&nbsp;","failed to upload payment @ #$counting");
-		
-		//finalizing transaction
-		
-		x_insert("total_incart,address,order_id,user_id,fullname,shopped_amount,order_date,product_token","final_checkout","'$final_cart','$address','$orderid','$userid','$fname','$final_total','$timer','$token'","&nbsp;","failed final_checkout @ #$counting");	
+							//x-modified ended
+							}
+					$final_total = array_sum($total_last);
+					$final_cart = array_sum($totalincart);
+					//uploading payment details
+					
+					x_insert("user_id,order_id,amount_paid,product_token","payment_details","'$userid','$orderid','$final_total','$token'","&nbsp;","failed to upload payment @ #$counting");
+					
+					//finalizing transaction
+					
+					x_insert("total_incart,address,order_id,user_id,fullname,shopped_amount,order_date,product_token","final_checkout","'$final_cart','$address','$orderid','$userid','$fname','$final_total','$timer','$token'","&nbsp;","failed final_checkout @ #$counting");
+									
+						}
+				
+				
 					}
 				
 			}else{
