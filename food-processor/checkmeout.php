@@ -86,8 +86,7 @@ exit();
 				if((x_count("final_checkout","order_id='$orderid' AND product_token='$token' LIMIT 1") > 0) || (x_count("order_placed","order_id='$orderid' AND product_token='$token' LIMIT 1") > 0)){
 					//x_print("Order record in the database already");
 				}else{
-				// checking for sufficient balance
-				
+				// checking for sufficient balance before pushing cart content into db
 				if($curbal > $final_amtsession){
 
 				foreach($_SESSION["shopping_cart"] as $keys => $values){
