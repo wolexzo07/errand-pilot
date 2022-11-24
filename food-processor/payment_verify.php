@@ -9,13 +9,13 @@ if(x_validatesession("XCAPE_HACKS") && x_validatesession("ER_ID_2022_VI") && x_v
 	if(x_get("optcmd") == "flutter"){
 		$optcmd = x_clean(x_get("optcmd")); // Getting payment company
 		$ref = x_clean(x_get("transaction_id")); // Transaction id
-		$total = x_clean(x_get("debited")); // Transaction Amount
+		$total = x_clean(x_get("debited")); // Transaction Amount without fees
 	}else{
 		$optcmd = x_clean(x_get("optcmd")); // Getting payment company
 		$ref = x_clean(x_get("ref")); // Transaction ref
 		$total = x_clean(x_get("total")); // Transaction Amount
 	}
-
+	//echo $total;exit();
 	$complist = array("paystack","flutter"); // payment company listing
 	
 	if(in_array($optcmd,$complist)){

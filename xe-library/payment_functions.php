@@ -3,7 +3,7 @@
 // flutters fees 
 function x_fwfees($amount){
 	if(x_justvalidate($amount) && is_numeric($amount) && ($amount > 0)){
-		$rate = (1.4/100) * $amount;
+		$rate = (1.42/100) * $amount;
 		// capping rate at NGN 2000
 		if($rate > 2000){
 			return 2000;

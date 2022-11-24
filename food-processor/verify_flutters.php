@@ -38,9 +38,6 @@ if(isset($pageExtension)){
 			if(x_justvalidate($fskey)){ // validating the existence of the secret key
 			
 				$txid = $ref; // Transaction reference
-				$amount = $total; // Total Transaction amount 
-				$fee = x_fwfees($amount); // flutters fees
-				
 				// initiating call to flutter verification API
 				$curl = curl_init();
 				curl_setopt_array($curl, array(
@@ -66,14 +63,16 @@ if(isset($pageExtension)){
 				  
 				  $status = $res->status;
 				  
-				  
+				  $amount_due = $total; // Transaction amount without fee
+				  $fee = x_fwfees($total); // flutters fees
+				
 				  if(($status=="success"))
 				  {
 					  $currency = $res->data->currency ;// Our transaction ref
 					  $tx_ref = $res->data->tx_ref ;// Our transaction ref
 					  $tx_id = $res->data->id; // Our transaction id from flutters
 					  $amountCharged = $res->data->charged_amount;
-					  $amountToPay = $amount;
+					  $amountToPay = $total + $fee; // All amount involved
 						
 						if($amountCharged >= $amountToPay){
 							// successful Transaction
@@ -97,9 +96,8 @@ if(isset($pageExtension)){
 					
 					
 					$user_hash_token = eptoks($token); // hashed user token
-					$amount = $amountToPay - $fee; // amount without gateway
-					//$fee = x_pstkfees($amount); // fees charges
-					$total_amount = $fee + $amount; // amount with charges
+					$amount = $amountToPay - $fee; // amount without gateway fees
+					$total_amount = $amountToPay; // amount with charges
 					
 					$timer = x_curtime(0,1);$os = xos();$br = xbr();$ip = xip();
 					

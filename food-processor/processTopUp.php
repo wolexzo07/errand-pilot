@@ -101,7 +101,7 @@ function payWithPaystack(){
 			  amount: <?php echo ($amount+$fee);?>,
 			  currency: "NGN",
 			  payment_options: "card, banktransfer, ussd",
-			  redirect_url: "payment_verify?optcmd=flutter&debited=<?php echo ($amount+$fee);?>",
+			  redirect_url: "payment_verify?optcmd=flutter&debited=<?php echo $amount;?>",
 			  meta: {
 				consumer_id: <?php echo $userid;?>,
 				consumer_mac: "<?php echo $orderid;?>",
