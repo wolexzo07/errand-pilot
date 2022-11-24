@@ -48,6 +48,8 @@ $timer = x_curtime("0","1");
 ?>
  
 
+
+
 <section style="background-attachment:fixed;margin-top:0px;" data-bs-version="5.1" class="header5 cid-tfrmEfarwJ" id="header5-6">
     
     <div class="container">
@@ -165,11 +167,28 @@ $timer = x_curtime("0","1");
  <script src="../js/Toast.min.js" type="text/javascript"></script>
  <script src="../js/toastify-js.js" type="text/javascript"></script>
  <script src="js/animate-page.js" type="text/javascript"></script>
+ <?php
+		// Handling display messages
+		if(x_validateget("payments-msg")){
+		?>
+		<script>
+			function displayMsg(){
+				showalert("<?php echo urldecode(x_get('payments-msg'));?>");
+				setTimeout(function(){
+					window.location="final_checkout_n";
+				},2000);
+			}
+		</script>
+		<?php
+		}
+?>
  <script>
-
+	
 	  $(document).ready(function(){
+		  
 		  retrieve_balance(); // Getting balance
 		  finalize_carting();// print current items in-cart
+		 
 		  $("#lastPayment").click(function(){// processing finals
 			  load_all(); 
 			  var token_this = "<?php echo $_SESSION['XCAPE_HACKS'];?>";
@@ -236,6 +255,7 @@ $timer = x_curtime("0","1");
 			  $("#top-descrip").removeAttr("required");			
 			  $(".blists").removeAttr("required");
 		  });
+		   displayMsg();
 	  });
   </script>
   

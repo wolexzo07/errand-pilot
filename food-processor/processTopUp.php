@@ -91,16 +91,17 @@ function payWithPaystack(){
 		
 		$fskey = x_getsingle("SELECT secretkey FROM paymentkeys WHERE company='flutters' AND status='1' LIMIT 1","paymentkeys WHERE company='flutters' AND status='1' LIMIT 1","secretkey"); // Getting secret key
 		
+		$fee = x_fwfees($amount); // flutters fees
 		?>
 		<script>
 		  function flutterwavePayment() {
 			const modal = FlutterwaveCheckout({
 			  public_key: "<?php echo $fpkey;?>",
-			  tx_ref: "<?php echo $orderid;?>",
-			  amount: <?php echo $amount;?>,
+			  tx_ref: "<?php echo $orderid.time();?>",
+			  amount: <?php echo ($amount+$fee);?>,
 			  currency: "NGN",
 			  payment_options: "card, banktransfer, ussd",
-			  //redirect_url: "verify_flutters",
+			  redirect_url: "payment_verify?optcmd=flutter&debited=<?php echo ($amount+$fee);?>",
 			  meta: {
 				consumer_id: <?php echo $userid;?>,
 				consumer_mac: "<?php echo $orderid;?>",
@@ -116,15 +117,14 @@ function payWithPaystack(){
 				logo: "",
 			  },
 			  callback: function(payment) {
-			   // Send AJAX verification request to backend
-			   //verifyTransactionOnBackend(payment.id);
+			  
 			   var ref = payment.id;
     		   var optcmd = "flutter";
 			   var amt = <?php echo $amount;?>;
 			   var amount = parseFloat(amt);
-			   autoverify_payment(ref,optcmd,amount);
+			   //autoverify_payment(ref,optcmd,amount);
 			   
-			   //modal.close();
+			   modal.close();
 			 },
 			   onclose: function(incomplete) {
 				  if (incomplete === true) {
