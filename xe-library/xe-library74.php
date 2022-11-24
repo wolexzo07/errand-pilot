@@ -1823,6 +1823,21 @@ function x_send_json($postData, $url, $token) {
 			
 		}
 	}
+	
+	// Update as at 11/24/2022
+	
+	function x_checkdate($realdate){
+		$date_arr  = explode('/', $realdate);
+		if (count($date_arr) == 3) {
+			if (checkdate($date_arr[0], $date_arr[1], $date_arr[2])) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return "Invalid input";
+		}
+	}
 
 // Paystack payment functions
 include("payment_functions.php");
