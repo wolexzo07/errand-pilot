@@ -13,7 +13,7 @@ if(x_validatesession("XCAPE_HACKS")){
 	
 	// Controlled google captcha
 	if(x_count("control_captcha","status='1'") > 0){
-		$secret = "6LcDo1sUAAAAAOF0Nwyg-jvChfPqH_w7s7YVNnn0";
+		$secret = "$gsecret";
 		$gpost = xp("g-recaptcha-response");
 		$params = array(
 				   "secret" => $secret,

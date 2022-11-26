@@ -1,6 +1,7 @@
 <?php
 $pageToken = md5(rand());
 include_once("finishit.php");
+include_once("siteinfo.php");
 xstart("0");
 if(x_validatesession("XCAPE_HACKS") && x_validatepost("blessme")){
     // xcape session hacks
@@ -11,7 +12,7 @@ if(x_validatesession("XCAPE_HACKS") && x_validatepost("blessme")){
 	}
 	// Controlled google captcha
 	if(x_count("control_captcha","status='1'") > 0){
-		$secret = "6LcDo1sUAAAAAOF0Nwyg-jvChfPqH_w7s7YVNnn0";
+		$secret = "$gsecret";
 		$gpost = xp("g-recaptcha-response");
 		$params = array(
 				   "secret" => $secret,
