@@ -69,8 +69,10 @@
 			   Payments 
 			</button>
 			<div class="dropdown-menu">
+			  <a class="dropdown-item" href="#">Wallet Transaction</a>
 			  <a class="dropdown-item" href="#">Paid Transaction</a>
 			  <a class="dropdown-item" href="#">Unpaid Transaction</a>
+			  <a class="dropdown-item" href="#" onclick="load('ad_manual_transactions')">Manual Transactions</a>
 			  <a class="dropdown-item" href="#">Refunded Transaction</a>
 			  <a class="dropdown-item" href="#">Report Generation</a>
 			</div>

@@ -73,7 +73,7 @@ if(x_validatesession("XCAPE_HACKS") && x_validatesession("ER_ID_2022_VI") && x_v
 				$curbal = 0;
 			}
 			
-			x_insert("bank_account_id,transfer_description,transferdate,currency,tranx_type,user_token,status,payment_id,credit_amount,fee_amount ,total_amount,paid_on,tranx_token,approval_date,os,br,ip,balance_before,balance_after","topup_details","'$banks_acct','$tdetail','$tdate','NGN','manual','$user_hash_token','0','$pay_id','$amount','$fee','$total_amount','$timer','$trx_token','','$os','$br','$ip','$curbal',''","<p class='alert-txt'>Your alert was sent successfully! You have to wait for payment verification which might take up to 48Hrs before your wallet can be credited.<b>Please do not resend this alert.</b></p>","<p class='alert-txt'>Failed to send alert</p>");
+			x_insert("user_id,bank_account_id,transfer_description,transferdate,currency,tranx_type,user_token,status,payment_id,credit_amount,fee_amount ,total_amount,paid_on,tranx_token,approval_date,os,br,ip,balance_before,balance_after","topup_details","'$token','$banks_acct','$tdetail','$tdate','NGN','manual','$user_hash_token','0','$pay_id','$amount','$fee','$total_amount','$timer','$trx_token','','$os','$br','$ip','$curbal',''","<p class='alert-txt'>Your alert was sent successfully! You have to wait for payment verification which might take up to 48Hrs before your wallet can be credited.<b>Please do not resend this alert.</b></p>","<p class='alert-txt'>Failed to send alert</p>");
 		}
 		
 	}elseif($banks == "ps"){ // Paystack company

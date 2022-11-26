@@ -116,7 +116,7 @@ if(isset($pageExtension)){
 						exit();
 					}
 					
-					x_insert("currency,tranx_type,user_token,status,payment_id,credit_amount,fee_amount ,total_amount,paid_on,tranx_token,approval_date,os,br,ip,balance_before,balance_after","topup_details","'NGN','flutter','$user_hash_token','1','$pay_id','$amount','$fee','$total_amount','$timer','$trx_token','$timer','$os','$br','$ip','$curbal','$newbalance'","<center><img src='../image/success.jpg' style='wid' class='img-fluid'/></center><script>response_sh();</script>","<center><img src='../image/failed.png' class='img-fluid'/></center>");
+					x_insert("user_id,currency,tranx_type,user_token,status,payment_id,credit_amount,fee_amount ,total_amount,paid_on,tranx_token,approval_date,os,br,ip,balance_before,balance_after","topup_details","'$token','NGN','flutter','$user_hash_token','1','$pay_id','$amount','$fee','$total_amount','$timer','$trx_token','$timer','$os','$br','$ip','$curbal','$newbalance'","<center><img src='../image/success.jpg' style='wid' class='img-fluid'/></center><script>response_sh();</script>","<center><img src='../image/failed.png' class='img-fluid'/></center>");
 				}
 						}
 						else{
