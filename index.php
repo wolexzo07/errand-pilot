@@ -19,7 +19,9 @@ include("session_hacks_bypass.php");
   <?php include_once("headed.php");?>
 </head>
 <body onload="openFullscreen()">
-  
+  <?php
+  include("chattingBot.php");
+  ?>
   <section data-bs-version="5.1" class="menu menu2 cid-teH97O5qIj" once="menu" id="menu2-6">
   
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">

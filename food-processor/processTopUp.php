@@ -84,8 +84,7 @@ if(x_validatesession("XCAPE_HACKS") && x_validatesession("ER_ID_2022_VI") && x_v
 		
 		$fee = x_pstkfees($amount);
 		?>
- 
-<script type="text/javascript">
+ <script type="text/javascript">
 function payWithPaystack(){
         var handler = PaystackPop.setup({
 		  currency: 'NGN', //This can only be either NGN or USD
