@@ -6,10 +6,6 @@ include_once("../finishit.php");
 <div class="row">
 
 	<div class="col-12">
-		<?php include_once("a_menubar.php");?>
-	</div>
-	
-	<div class="col-12">
 		
 		<div class="row">
 		

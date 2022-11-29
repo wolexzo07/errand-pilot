@@ -1,7 +1,12 @@
 
    <div class="card">
-		  <div class="card-header bg-light">
-		  
+		  <div style="padding:0px;" class="card-header bg-light">
+		 
+		  <div onclick="window.location='manpage?hash=<?php echo $_SESSION['PAGE_TOKEN'];?>'" class="btn-group">
+			 <i class="fa fa-home fa-2x"></i>
+			
+		  </div>
+
 		  <div class="btn-group">
 			<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
 			   Users

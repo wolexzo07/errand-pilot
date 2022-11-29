@@ -96,6 +96,8 @@ $user_id = $_SESSION["ER_ID_2022_VI"];
              });
          </script>
 		 
+		 
+		 
 <?php include("manageChart.php");?>	 
     </body>
 </html>

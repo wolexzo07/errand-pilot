@@ -19,7 +19,7 @@ if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
 
 // Curbing Re-Editing of Cart
 
-if(x_validatesession("EP_CUB_CARTEDIT")){
+if(x_validatesession("EP_CUB_CARTEDIT") && x_validatesession("ER_ID_2022_VI")){
 	?>
 	<script>
 		alert("You cannot re-edit cart");

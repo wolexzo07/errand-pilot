@@ -26,3 +26,6 @@
 		<script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="../dtables/datatables.min.css"/>
+		<script type="text/javascript" src="../dtables/datatables.min.js"></script>

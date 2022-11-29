@@ -1,5 +1,14 @@
 <?php
 	#Errand Pilot Functions
+	
+		function x_getsingleupdate($table,$column_name,$extrasql){
+			if(x_count("$table","$extrasql LIMIT 1") > 0){
+				$sql = x_getsingle("SELECT $column_name FROM $table WHERE $extrasql LIMIT 1","$table WHERE $extrasql LIMIT 1","$column_name");
+			}else{
+				$sql = "Invalid queries";
+			}
+			return $sql;
+		}
 
 		function ep_walletBal($userToken){
 		 $result = x_getsingle("SELECT wallet_balance FROM manageaccount WHERE token='$userToken' LIMIT 1","manageaccount WHERE token='$userToken' LIMIT 1","wallet_balance");

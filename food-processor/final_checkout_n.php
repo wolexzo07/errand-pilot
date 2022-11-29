@@ -19,9 +19,12 @@
 	   
 	// Session Cubbing going back to previous page 
 	
-	if(!x_validatesession("EP_CUB_CARTEDIT")){
-		$_SESSION["EP_CUB_CARTEDIT"] = sha1("yes".DATE("YmdHis"));
+	if(x_validatesession("shopping_cart") && x_validatesession("ER_ID_2022_VI")){// checking if cart not empty and if session is active
+			if(!x_validatesession("EP_CUB_CARTEDIT")){
+				$_SESSION["EP_CUB_CARTEDIT"] = sha1("yes".DATE("YmdHis"));
+			}
 	}
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +42,8 @@
 <?php 
 //validation for logon users
 if(!isset($_SESSION["XELOW_COMMERCE_ORDER_ID"])){
-finish("../createAccount","Please register or login before you continue.");
+	$tkon = sha1(uniqid()).md5(uniqid()).sha1(rand(10,10000));
+finish("../loginAccount?hash=$tkon","Please register or login before you continue.");
 exit();
 }
 $orderid = x_clean($_SESSION["XELOW_COMMERCE_ORDER_ID"]);
@@ -59,7 +63,7 @@ $timer = x_curtime("0","1");
 		<div class="col-12">
 		
 		<button style="margin-left:0pt;" class="btn btn-warning btn-sm">
-		Hi, <b>&nbsp;<?php echo substr(strtoupper($_SESSION["XELOW_COMMERCE_NAME"]),0,30);?></b> 
+		Hi, <b>&nbsp;<?php echo substr(strtoupper($_SESSION["XELOW_COMMERCE_NAME"]),0,23);?></b> 
 		</button> 				
 		<button class="btn btn-primary btn-sm">
 		<b>ORDER ID : <font class="itemstyle"><?php echo $orderid ;?></font></b>

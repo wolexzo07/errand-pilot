@@ -18,7 +18,8 @@
 					if(x_count("manageaccount","is_big='1' AND id='$user_id'") > 0){
 						?>
 					<li>
-                        <a href="#" onclick="load('a_admin_manager')">
+                        <!---<a href="#" onclick="load('a_admin_manager')">--->
+                        <a href="ad_admin_cpanel.php?hash=<?php echo $_SESSION['PAGE_TOKEN'];?>">
                             <i class="fa fa-key"></i>
                             Admin Page
                         </a>

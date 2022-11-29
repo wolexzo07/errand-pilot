@@ -6,7 +6,7 @@
             <div class="navbar-brand">
                 <span class="navbar-logo">
                     
-                        <img src="assets/images/logo8-332x123.png" alt="Logo" style="height: 3.9rem;">
+                        <img src="<?php echo "../".$sitelogo;?>" alt="Logo" style="height: 3.9rem;">
                     
                 </span>
                 
@@ -34,8 +34,10 @@
                     
                 </div>
                 <div class="navbar-buttons mbr-section-btn">
-				
-                    <a class="btn btn-sm btn-warning display-4" id="x_get_content" href=""><i class="fa fa-shopping-cart"></i> &nbsp;
+					<?php
+						if(x_validatesession("ER_ID_2022_VI")){
+							?>
+					<a class="btn btn-sm btn-warning display-4" id="x_get_content" href=""><i class="fa fa-shopping-cart"></i> &nbsp;
 						<span class="loadcartvalue">
 							<?php 
 							if(x_validatesession("shopping_cart")){
@@ -48,6 +50,10 @@
 						</span> 
 
                     </a>
+							<?php
+						}
+					?>
+                    
 					<a class="btn btn-sm btn-primary display-4 " id="x_get_balance" href="#">
 					</a>
 					
