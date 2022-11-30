@@ -9,8 +9,8 @@
 		<button class="btn btn-success" onclick="load('ad_manual_transactions')"> Manual Transactions</button>
 	</div>
 	<div class="col-lg-6 col-md-6 col-12 mb-3">
-		<button class="btn btn-primary" onclick="load('ad_manual_tranxappr')"> Approved Tranx. = <?php echo x_count("topup_details","status='1' AND tranx_type='manual'");?></button>
-		<button class="btn btn-info" onclick="load('ad_manual_transactions')"> Pending Tranx. =  <?php echo x_count("topup_details","status='0' AND tranx_type='manual'");?> </button>
+		<button class="btn btn-primary" onclick="load('ad_manual_tranxappr')"> Approved Transactions = <?php echo x_count("topup_details","status='1' AND tranx_type='manual'");?></button>
+		<button class="btn btn-info" onclick="load('ad_manual_transactions')"> Pending Transactions =  <?php echo x_count("topup_details","status='0' AND tranx_type='manual'");?> </button>
 	</div>
 </div>
 
@@ -95,7 +95,7 @@
 						</td>
 						<td>
 							<button class="btn btn-success btn-sm" onclick="readTranxmanual('<?php echo $id;?>' , '<?php echo $trx_token?>','approve')"><i class="fa fa-check-circle"></i> Approve</button>
-							<button class="btn btn-primary btn-sm" onclick="readTranxmanual('<?php echo $id;?>' , '<?php echo $trx_token?>','read')"><i class="fa fa-eye"></i> Details</button>
+							<button class="btn btn-primary btn-sm" onclick="readTranxmanual('<?php echo $id;?>' , '<?php echo $trx_token?>','read')"><i class="fa fa-globe"></i> Details</button>
 							<button class="btn btn-danger btn-sm" onclick="readTranxmanual('<?php echo $id;?>' , '<?php echo $trx_token?>','delete')"><i class="fa fa-trash"></i> Delete</button>
 						</td>
 					</tr>
@@ -132,7 +132,9 @@
 			success:function(data){
 				$("#trx-result").html(data);
 				setTimeout(function(){
-					load("ad_manual_transactions");
+					if(cmd != "read"){
+						load("ad_manual_transactions");
+					}
 				},5000)
 			},
 			error:function(){

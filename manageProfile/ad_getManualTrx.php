@@ -107,11 +107,11 @@ if(x_validateget("tranxToken") && x_validateget("cmd") && x_validateget("tranxId
 								<div class="list-group">
 									<div class="list-group-item">
 										<h3 class="head-trx">Transactions details</h3>
-										<button class="btn btn-info btn-sm">Tranx-ID : <?php echo $pay_id;?></button>
+										<button class="btn btn-info btn-sm">Tranx-ID : <b><?php echo $pay_id;?></b></button>
 										<table class="table mt-3">
 											<tr>
 												<td>Transaction Status</td>
-												<th><span class="badge bg-<?php echo $scolor;?>"><?php echo $status;?></span><?php
+												<th><span style="color:white;" class="badge bg-<?php echo $scolor;?>"><?php echo $status;?></span><?php
 												if($status == "Approved"){
 													echo " at ".$apprdate;
 												}
@@ -121,10 +121,17 @@ if(x_validateget("tranxToken") && x_validateget("cmd") && x_validateget("tranxId
 												<td>Amount Transferred</td>
 												<th><?php echo "NGN ".number_format($credit,0);?></th>
 											</tr>
+											<?php
+											if($status == "Approved"){
+												?>
 											<tr>
-												<td>Credit Amount(Fee deducted)</td>
+												<td>Credited Amount(Fee deducted)</td>
 												<th><?php echo "NGN ".number_format($credit-$fee,0);?></th>
 											</tr>
+												<?php
+											}
+											?>
+											
 											<tr>
 												<td>Fee Amount</td>
 												<th><?php echo "NGN ".number_format($fee,0);?></th>
@@ -161,6 +168,26 @@ if(x_validateget("tranxToken") && x_validateget("cmd") && x_validateget("tranxId
 											</tr>
 										</table>
 									</div>
+									<?php
+											if($status == "Approved"){
+												?>
+									<div class="list-group-item">
+										<h3 class="head-trx">Wallet details</h3>
+										<table class="table mt-3">
+											<tr>
+												<td>Balance Before</td>
+												<th><?php echo "NGN ".number_format($bb,0);?></th>
+											</tr>
+											<tr>
+												<td>Balance After</td>
+												<th><?php echo "NGN ".number_format($bf,0);?></th>
+											</tr>
+											
+										</table>
+									</div>
+												<?php
+											}
+									?>
 									<div class="list-group-item">
 										<h3 class="head-trx">User details</h3>
 										<table class="table mt-3">
@@ -182,20 +209,8 @@ if(x_validateget("tranxToken") && x_validateget("cmd") && x_validateget("tranxId
 											</tr>
 										</table>
 									</div>
-									<div class="list-group-item">
-										<h3 class="head-trx">Wallet details</h3>
-										<table class="table mt-3">
-											<tr>
-												<td>Balance Before</td>
-												<th><?php echo "NGN ".number_format($bb,0);?></th>
-											</tr>
-											<tr>
-												<td>Balance After</td>
-												<th><?php echo "NGN ".number_format($bf,0);?></th>
-											</tr>
-											
-										</table>
-									</div>
+									
+									
 								</div>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-12 col-xs-12"></div>

@@ -9,8 +9,8 @@
 		<button class="btn btn-success" onclick="load('ad_manual_transactions')"> Manual Transactions</button>
 	</div>
 	<div class="col-lg-6 col-md-6 col-12 mb-3">
-		<button class="btn btn-primary" onclick="load('ad_manual_tranxappr')"> Approved Tranx. = <?php echo x_count("topup_details","status='1' AND tranx_type='manual'");?></button>
-		<button class="btn btn-info" onclick="load('ad_manual_transactions')"> Pending Tranx. =  <?php echo x_count("topup_details","status='0' AND tranx_type='manual'");?> </button>
+		<button class="btn btn-primary" onclick="load('ad_manual_tranxappr')"> Approved Transactions = <?php echo x_count("topup_details","status='1' AND tranx_type='manual'");?></button>
+		<button class="btn btn-info" onclick="load('ad_manual_transactions')"> Pending Transactions =  <?php echo x_count("topup_details","status='0' AND tranx_type='manual'");?> </button>
 	</div>
 </div>
 
@@ -116,8 +116,8 @@
 	$(document).ready( function () {
 		$('#table_id').DataTable({
 			lengthMenu: [
-				[10, 25, 50, 100, -1],
-				[10, 25, 50, 100, 'All'],
+				[5,10, 25, 50, 100, -1],
+				[5,10, 25, 50, 100, 'All'],
 			],
 		});
 		$("#table_id_filter input").attr("placeholder","Search Anything");
