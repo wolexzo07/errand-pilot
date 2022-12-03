@@ -28,7 +28,7 @@ if(x_validateget("tranxToken") && x_validateget("cmd") && x_validateget("tranxId
 		x_updated("topup_details","id='$tid' AND tranx_token='$trx_token'","approval_date='$timer',status='1',balance_before='$current_balance',balance_after='$newbalance'","<p class='alert-txt'>Bank Transfer approved! Wallet was credited with <b>$final_credit</b>.</p>","<p class='alert-txt'>Failed to approve!.</p>");
 		// initiating bank tranfer approval ended
 	}
-	elseif($cmd == "read"){// Readind data started
+	elseif($cmd == "read"){// Reading data started
 		
 		foreach(x_select("0","topup_details","id='$tid' AND tranx_token='$trx_token'","0","id desc") as $topup){
 				

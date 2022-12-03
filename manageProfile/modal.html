@@ -1,0 +1,44 @@
+<div class="Manual-Trx-Modal">
+				<div class="row">
+					<div class="col-12">
+						<button style="font-size:20px;padding:20px;" class="pull-right btn closeMT-Modal">&times;
+						</button>
+					</div>
+				</div>
+				<div class="row">
+						
+			   </div>
+			</div>
+			
+			<style>
+.Manual-Trx-Modal{
+	position:fixed;
+	top:14%;
+	left:10%;
+	right:10%;
+	width:;
+	height:70%;
+	background:white;
+	opacity:0.9;
+	z-index:1000;
+	box-shadow:10px 10px 10px lightgray;
+	-webkit-box-shadow:10px 10px 10px lightgray;
+	-moz-box-shadow:10px 10px 10px lightgray;
+	-o-box-shadow:10px 10px 10px lightgray;
+	-ms-box-shadow:10px 10px 10px lightgray;
+	overflow:auto;
+	padding-bottom:20px;
+	display:block;
+}
+.closeMT-Modal{
+	padding:0px;
+}
+</style>
+
+<script>
+  $(document).ready(function(){
+	  $(".closeMT-Modal").click(function(){
+			  $(".Manual-Trx-Modal").hide(500);
+		  });
+	   });
+</script>

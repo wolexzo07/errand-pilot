@@ -37,7 +37,7 @@
 			</button>
 			<div class="dropdown-menu">
 			  <a class="dropdown-item" href="#">Pending Orders</a>
-			  <a class="dropdown-item" href="#">Approved Orders</a>
+			  <a class="dropdown-item" href="#" onclick="load('ad_appr_orders')">Approved Orders</a>
 			  <a class="dropdown-item" href="#">Orders Tracking</a>
 			  <a class="dropdown-item" href="#">Delivered Orders</a>
 			  <a class="dropdown-item" href="#">Cancelled & Refunds Orders</a>
