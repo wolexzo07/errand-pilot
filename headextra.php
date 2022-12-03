@@ -1,4 +1,10 @@
-	<?if(!isset($company || $sitename)){exit()}?>
+	<?php
+	if(isset($company) && isset($sitename)){
+		
+		}else{
+			exit();
+		}
+	?>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
 	<link rel="icon" type="image/x-icon" href="image/iqp.png">

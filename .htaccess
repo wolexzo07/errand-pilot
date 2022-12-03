@@ -50,9 +50,9 @@ Satisfy All
 
 ##Enable Caching##
 ## Files to Cache for One Month
-##<FilesMatch "\.(flv|gif|jpg|jpeg|png|ico|swf)$">
-##Header set Cache-Control "max-age=2592000"
-##</FilesMatch>
+<FilesMatch "\.(flv|gif|jpg|jpeg|png|ico|swf)$">
+Header set Cache-Control "max-age=2592000"
+</FilesMatch>
 
 
 

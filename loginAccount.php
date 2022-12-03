@@ -10,10 +10,6 @@ if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
 	exit();
 }
 
-if(isset($_SESSION["IQGAMES_EMAIL_2018_VISION"])){
-	finish("dash/manpag","0");
-	exit();
-}
 $_SESSION["XCAPE_HACKS"] = md5(rand());
 ?>
 <html>
