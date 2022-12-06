@@ -98,6 +98,7 @@ if(x_count("order_placed","order_id='$oid' AND product_token='$ohash' LIMIT 1") 
 	$counter = 0;
 	?>
 	<div class="table-responsive">
+	
 	<div id="react-msg"></div>
 	<table class="table table-hover tabover">
 	<tr>
@@ -117,6 +118,11 @@ if(x_count("order_placed","order_id='$oid' AND product_token='$ohash' LIMIT 1") 
 		$pqty = $key["product_quantity"];
 		$unit = $key["unit_price"];
 		$pamount = $key["total_amount"];
+		
+		$p_status = $key["processing_status"];
+		$s_status = $key["shipping_status"];
+		$d_status = $key["delivery_status"];
+		
 			?>
 
 			<tr>
@@ -130,14 +136,48 @@ if(x_count("order_placed","order_id='$oid' AND product_token='$ohash' LIMIT 1") 
 				echo strtoupper($pname);
 				};?>
 			</td>
-			<td><?php echo $pqty;?></td>
+			<td><?php echo $pqty;?> 
+			<input style="width:50px;margin-left:20px;" id="edited<?php echo $pqty;?>" type="number" min="1" value="<?php echo $pqty;?>" max="<?php echo $pqty;?>" />
+			</td>
 			<td><?php echo "NGN ".number_format($unit,2);?></td>
 			<td><?php echo "NGN ".number_format($pamount,2);?></td>
 			<td>
-				<button onclick="manageOrderTable()" class="btn btn-sm btn-info">Fulfil</button>
-				<button onclick="manageOrderTable()" class="btn btn-sm btn-primary">Ship</button>
-				<button onclick="manageOrderTable()" class="btn btn-sm btn-success">Deliver</button>
-				<button onclick="manageOrderTable()" class="btn btn-sm btn-danger">Cancel</button>
+			<?php
+			if($p_status == "1"){ // Handling processing button
+				?><button disabled class="btn btn-sm btn-info">Fulfilled</button><?php
+			}else{
+				?><button onclick="manageOrderTable('<?php echo $id;?>','<?php echo $ohash;?>','fulfil')" class="btn btn-sm btn-info">Fulfil</button><?php
+			}
+			?>
+			
+			<?php
+			if($s_status == "1"){ // Handling shipping button
+				?><button disabled class="btn btn-sm btn-info">Shipped</button><?php
+			}else{
+				?><button onclick="manageOrderTable('<?php echo $id;?>','<?php echo $ohash;?>','ship')" class="btn btn-sm btn-primary">Ship</button><?php
+			}
+			?>
+			
+			<?php
+			if($d_status == "1"){ // Handling shipping button
+				?><button disabled class="btn btn-sm btn-info">Delivered</button><?php
+			}else{
+				?>	<button onclick="manageOrderTable('<?php echo $id;?>','<?php echo $ohash;?>','deliver')" class="btn btn-sm btn-success">Deliver</button><?php
+			}
+			?>
+				
+				<?php
+					if(($p_status == "1") && ($s_status == "1") && ($d_status == "1")){
+						
+					}else{
+						?>
+						
+						<button onclick="manageOrderTable('<?php echo $id;?>','<?php echo $ohash;?>','cancel')" class="btn btn-sm btn-danger">Cancel</button>
+						
+						<?php
+					}
+				?>
+				
 			</td>
 			</tr>
 			<?php
@@ -156,16 +196,19 @@ echo $pagination;
 }
 ?>
 <script>
+	$(document).ready(function(){
+		$("#mini-loader").hide();
+	});
 	function manageOrderTable(tranxId , tranxToken , cmd){
+		$("#react-msg").show();
+		$("#react-msg").html("<p class='alert-txt'>Loading <img class='img-fluid' src='img/ajax-loader.gif'/></P>");
 		$.ajax({
 			url:"ad_manageOrderTable?tranxId="+tranxId+"&tranxToken="+tranxToken+"&cmd="+cmd,
 			method:"GET",
 			success:function(data){
-				$("#trx-result").html(data);
+				$("#react-msg").html(data);
 				setTimeout(function(){
-					if(cmd != "read"){
-						load("ad_appr_orders");
-					}
+					$("#react-msg").hide(500);
 				},5000)
 			},
 			error:function(){

@@ -1,15 +1,108 @@
 <?php
 	#Errand Pilot Functions
 	
-		function x_getsingleupdate($table,$column_name,$extrasql){
-			if(x_count("$table","$extrasql LIMIT 1") > 0){
-				$sql = x_getsingle("SELECT $column_name FROM $table WHERE $extrasql LIMIT 1","$table WHERE $extrasql LIMIT 1","$column_name");
-			}else{
-				$sql = "Invalid queries";
-			}
-			return $sql;
+	function x_getsingleupdate($table,$column_name,$extrasql){
+		if(x_count("$table","$extrasql LIMIT 1") > 0){
+			$sql = x_getsingle("SELECT $column_name FROM $table WHERE $extrasql LIMIT 1","$table WHERE $extrasql LIMIT 1","$column_name");
+		}else{
+			$sql = "Invalid queries";
 		}
+		return $sql;
+	}
+		
 
+			// send mails
+	function ep_mailer($title,$content,$user_email){
+			if(file_exists("../siteinfo.php")){
+				require("../siteinfo.php");
+			}else{
+				require("siteinfo.php");
+			}
+		$date = Date("Y");
+		$titl = strip_tags($title);
+		$subject = "$sitename : $titl";
+		$message = "
+		<html>
+		<head>
+		<title>$subject</title>
+		</head>
+		<body>
+
+		<table cellpadding='20px' cellspacing='0px' border='0px' style='border:1px solid lightgray;' width='100%'>
+		<thead>
+		<tr style='background:green'>
+		<th><center><img src='https://$siteurl/$sitelogo' style='width:250px;'/></center></th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+		<td>
+		$content
+		</td>
+		</tr>
+		</tbody>
+		<tfoot>
+		<tr>
+		<td>
+		Thank you for choosing us<br/>
+		From <b>$sitename Team</b>
+		</td>
+		</tr>
+		<tr style='background:green;color:white;'>
+		<td>
+		<h4 style='color:white;'>CONTACT US THROUGH:</h4>
+		<p style='font-weight:bold;color:white;'>Email : <a style='text-decoration:none;color:white;'>$siteemail</a></p>
+		<p style='font-weight:bold;color:white;'>Phone 1 :  $phone1</p>
+		<p style='font-weight:bold;color:white;'>Phone 2 :  $phone2</p>	
+		<p style='text-align:center;border-top:1px solid lightgray;padding-top:10px;'>Powered by <b><a style='text-decoration:none;color:white;'>$siteurl</a> &copy; $date</b></p>
+		</td>
+		</tr>
+		</tfoot>
+
+		</table>
+
+		</body>
+		</html>
+		";
+		
+		if(x_count("control_mail","status='1'") > 0){
+			
+				if(sendmail($user_email,$subject,$message) == 0){
+					$msg="<script type='text/javascript'>alert('Mailing Failed!')</script>";
+									echo $msg;
+					}	
+			}			
+	}
+	
+	 // Getting Alert message
+	function ep_alert_error($msg , $colorshortcode ,$fa_icon){
+		print "<div class='alert alert-$colorshortcode text-center'><i class='fa fa-$fa_icon' style='font-size:60pt;'></i><br/><br/> $msg</div>";
+	}
+	
+	// Manage notification
+	function ep_notifier($type,$title,$message,$userid,$category){
+		$filter = array("p","all","admin");
+		$filter_cat = array('credit','debit','refund','create','fulfil','ship','deliver','cancel');
+		if(in_array($type,$filter) && in_array($category,$filter_cat)){
+			$success = "&nbsp;";
+			$failed = "<p>Failed to notify #$userid</p>";
+			$stime = x_curtime(0,0);
+			$rtime = x_curtime(0,1);
+			$message = x_clean($message);$title = x_clean($title);
+			if(x_count("notifications_controller","status='1'") > 0){
+				if(($type == "admin") && ($userid == "")){
+					x_insert("category,type,title,message,userid,status,stime,rtime","notifyme","'$category','$type','$title','$message','0','0','$stime','$rtime'","$success","$failed");
+				}else{
+					x_insert("category,type,title,message,userid,status,stime,rtime","notifyme","'$category','$type','$title','$message','$userid','0','$stime','$rtime'","$success","$failed");
+				}
+			}	
+		}else{
+			echo "missing notifier parameter";
+		}
+	}
+	
+		// fetch user wallet balance
+	
 		function ep_walletBal($userToken){
 		 $result = x_getsingle("SELECT wallet_balance FROM manageaccount WHERE token='$userToken' LIMIT 1","manageaccount WHERE token='$userToken' LIMIT 1","wallet_balance");
 		 return $result;

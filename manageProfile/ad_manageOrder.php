@@ -51,7 +51,7 @@ if(x_validateget("tranxToken") && x_validateget("cmd") && x_validateget("tranxId
 						<?php
 						$filer = "qrcoder/".sha1($oid).".png";
 						if(file_exists($filer)){
-							echo "<br/><br/><img src='$filer' src='img-responsive pull-right'/>";
+							echo "<br/><br/><img src='$filer' style='width:80px;' src='img-responsive pull-right'/>";
 						}else{
 						x_qrcode($oid,$filer,"1");
 						echo "<br/><br/><img src='$filer' src='img-responsive pull-right'/>";
