@@ -18,50 +18,11 @@ include("session_hacks_bypass.php");
 <head>
   <?php include_once("headed.php");?>
 </head>
-<body onload="openFullscreen()">
+<body>
   <?php
   include("chattingBot.php");
+  include("top-navbar.php");
   ?>
-  <section data-bs-version="5.1" class="menu menu2 cid-teH97O5qIj" once="menu" id="menu2-6">
-  
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                        <img src="assets-new/images/logo8-309x115.png" alt="EP Logo" style="height: 3.6rem;">
-                </span>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item dropdown open"><a class="nav-link link text-black dropdown-toggle display-4" href="https://mobiri.se" data-toggle="dropdown-submenu" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">ABOUT US</a><div class="dropdown-menu" aria-labelledby="dropdown-305"><a class="text-black dropdown-item display-4" href="https://mobiri.se">Company</a><a class="text-black dropdown-item display-4" href="https://mobiri.se">Services</a></div></li>
-                    <li class="nav-item"><a class="nav-link link text-black display-4" href="https://mobiri.se">HOW IT WORKS</a></li></ul>
-                <div class="icons-menu">
-                    <a class="iconfont-wrapper" href="#" target="_blank">
-                        <span class="p-2 mbr-iconfont socicon-facebook socicon"></span>
-                    </a>
-                    <a class="iconfont-wrapper" href="#" target="_blank">
-                        <span class="p-2 mbr-iconfont socicon-twitter socicon"></span>
-                    </a>
-                    <a class="iconfont-wrapper" href="#" target="_blank">
-                        <span class="p-2 mbr-iconfont socicon-instagram socicon"></span>
-                    </a>
-                    
-                </div>
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-4" href="loginAccount">SIGN IN</a></div>
-            </div>
-        </div>
-    </nav>
-	
-</section>
-
-
 
 <section data-bs-version="5.1" class="header1 cid-teH3P2PkAE mbr-fullscreen mbr-parallax-background" id="header1-1">
 
@@ -95,62 +56,11 @@ include("session_hacks_bypass.php");
                 
             </div>
         </div>
-        <div class="row">
-            <div class="card col-12 col-md-6 col-lg-3">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <div class="iconfont-wrapper">
-                            <span class="mbr-iconfont mobi-mbri-clock mobi-mbri"></span>
-                        </div>
-                        <h5 class="card-title mbr-fonts-style display-7"><strong>Fast Delivery</strong></h5>
-                        <p class="card-text mbr-fonts-style display-7">You don't have to code to create your own site. Select one of
-                            available themes in the Mobirise sitebuilder.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-12 col-md-6 col-lg-3">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <div class="iconfont-wrapper">
-                            <span class="mbr-iconfont mobi-mbri-responsive-2 mobi-mbri"></span>
-                        </div>
-                        <h5 class="card-title mbr-fonts-style display-7"><strong>Realtime Tracking</strong></h5>
-                        <p class="card-text mbr-fonts-style display-7">All sites you create with the Mobirise web builder are
-                            mobile-friendly natively. No special actions required.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-12 col-md-6 col-lg-3">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <div class="iconfont-wrapper">
-                            <span class="mbr-iconfont mobi-mbri-cash mobi-mbri"></span>
-                        </div>
-                        <h5 class="card-title mbr-fonts-style display-7"><strong>Fast Payments</strong></h5>
-                        <p class="card-text mbr-fonts-style display-7">Select the theme that suits you. Each theme in the Mobirise
-                            site builder contains a set of unique blocks.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-12 col-md-6 col-lg-3">
-                <div class="card-wrapper">
-                    <div class="card-box align-center">
-                        <div class="iconfont-wrapper">
-                            <span class="mbr-iconfont mobi-mbri-phone mobi-mbri"></span>
-                        </div>
-                        <h5 class="card-title mbr-fonts-style display-7"><strong>24/7 Support&nbsp;</strong></h5>
-                        <p class="card-text mbr-fonts-style display-7">Use Mobirise website building software to create multiple
-                            sites for commercial and non-profit projects.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="corevalues" class="row"></div>
     </div>
 </section>
 
 <section data-bs-version="5.1" style="padding-top:100px;" class="form1 cid-teH5TqR92w mbr-parallax-background" id="form1-5">
-
-    
 
     <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(255, 255, 255);"></div>
     <div class="container-fluid">
@@ -311,39 +221,9 @@ include("session_hacks_bypass.php");
         <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2">
             <strong>Testimonials</strong>
         </h3>
-        <div class="row justify-content-center">
-            <div class="card col-12 col-md-6">
-                <p class="mbr-text mbr-fonts-style mb-4 display-7">Themes in the Mobirise website builder offer multiple blocks: intros, sliders, galleries, forms, articles, and so on. Start a project and click on the red plus buttons to see the blocks available for your theme.</p>
-                <div class="d-flex mb-md-0 mb-4">
-                    <div class="image-wrapper">
-                        <img src="assets-new/images/team1.jpg" alt="Mobirise Website Builder">
-                    </div>
-                    <div class="text-wrapper">
-                        <p class="name mbr-fonts-style mb-1 display-4">
-                            <strong>Martin Smith</strong>
-                        </p>
-                        <p class="position mbr-fonts-style display-4">
-                            <strong>Client</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-12 col-md-6">
-                <p class="mbr-text mbr-fonts-style mb-4 display-7">You can have multiple pages in each project in Mobirise website builder software. Don't forget to set links to your pages after creating them. You can use menu blocks to create navigation for your site visitors.</p>
-                <div class="d-flex mb-md-0 mb-4">
-                    <div class="image-wrapper">
-                        <img src="assets-new/images/team2.jpg" alt="Mobirise Website Builder">
-                    </div>
-                    <div class="text-wrapper">
-                        <p class="name mbr-fonts-style mb-1 display-4">
-                            <strong>Jessica Brown</strong>
-                        </p>
-                        <p class="position mbr-fonts-style display-4">
-                            <strong>Client</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div id="testimonials" class="row justify-content-center">
+            
+
         </div>
     </div>
 </section>
@@ -387,10 +267,12 @@ include("session_hacks_bypass.php");
                             </div>
                             <div id="collapse1_<?php echo $id;?>" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
-                                    <p class="mbr-fonts-style panel-text display-7"><?php echo $desc;?></p>
+                                    <p class="mbr-fonts-style panel-text display-7">
+										<?php echo $desc;?>
+									</p>
                                 </div>
                             </div>
-                        </div>
+                    </div>
 					<?php
 					}
 					?>
@@ -403,29 +285,6 @@ include("session_hacks_bypass.php");
 			?>
 
 <?php include("footer-pager.php");?>
-<script>
-var elem = document.documentElement;
 
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
-    elem.msRequestFullscreen();
-  }
-}
-
-function closeFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) {
-    document.msExitFullscreen();
-  }
-}
-</script>
-  
 </body>
 </html>

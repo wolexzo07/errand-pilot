@@ -107,5 +107,27 @@
   <script>
   $(document).ready(function(){
 	  $("#playsmart").hide();
-  })
+	  displayManager("#corevalues","corevalue");
+	  displayManager("#testimonials","testimonials");
+  });
+  function displayManager(result,cmd){
+	  $(result).html("<center><img class='mt-3 mb-3' src='image/ajax-loader.gif' style='width:20px;'/> Loading. Please wait</center>");
+		$.ajax({
+				url:"retrieve_Corevalues?hashkey=<?php echo $_SESSION['XCAPE_HACKS']?>&cmd="+cmd,
+				method:"GET",
+				success:function(response){
+					$(result).html(response);
+				},
+				error:function(){}
+			});
+  }
   </script>
+  <style>
+	.cid-teH3P2PkAE {
+		background-image: url("assets/images/<?php
+$bgs = array("background2.jpg","directv-internet-1280x945.jpg","gallery-5.jpg");
+$catch = rand(0,2);
+echo $bgs[$catch];
+?>");
+	}
+  </style>
