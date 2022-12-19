@@ -12,7 +12,7 @@
 			   Users
 			</button>
 			<div class="dropdown-menu">
-			  <a class="dropdown-item" href="#">Registered</a>
+			  <a class="dropdown-item" onclick="load('ad_registered_users')" href="#">Registered</a>
 			  <a class="dropdown-item" href="#">Active users</a>
 			  <a class="dropdown-item" href="#">Inactive users</a>
 			  <a class="dropdown-item" href="#">Blacklisted Users</a>

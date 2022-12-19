@@ -42,7 +42,8 @@ $user_id = $_SESSION["ER_ID_2022_VI"];
 				</div>
 					
 					
-						<!---------------Just make the content work---------------->
+			<!---------------Just make the content work---------------->
+			
 			<div style="display:none;position:fixed;top:10%;left:37%;z-index:10000" id="loadTemporal" class="text-center"></div>
 			<div style="background-image:url();background-attachment:fixed;background-color:transparent;padding-left:0pt;padding-right:0pt;margin-top:5%;" class="container-fluid" id="calculate"></div>
 			

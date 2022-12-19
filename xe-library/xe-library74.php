@@ -84,14 +84,14 @@ if (!$mail->send()){
 
 function x_mailer($type,$to,$subject,$message){
 
-if($type == "0"){
-	return sendmail_local($to,$subject,$message);
-}elseif($type == "1"){
-	return sendmail($to,$subject,$message);
-}else{
-	$msg = "Invalid options";
-	return $msg;
-}
+	if($type == "0"){
+		return sendmail_local($to,$subject,$message);
+	}elseif($type == "1"){
+		return sendmail($to,$subject,$message);
+	}else{
+		$msg = "Invalid options";
+		return $msg;
+	}
 
 }
 	

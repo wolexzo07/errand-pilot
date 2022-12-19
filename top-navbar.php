@@ -41,7 +41,7 @@
                     </a>
                     
                 </div>
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-3" href="loginAccount"><i class="fa fa-sign-in"></i>&nbsp; SIGN IN</a></div>
+                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-3" href="loginAccount"><i class="fa fa-lock"></i>&nbsp; SIGN IN</a></div>
             </div>
         </div>
     </nav>

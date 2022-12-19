@@ -60,34 +60,9 @@ include("session_hacks_bypass.php");
     </div>
 </section>
 
-<section data-bs-version="5.1" style="padding-top:100px;" class="form1 cid-teH5TqR92w mbr-parallax-background" id="form1-5">
 
-    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(255, 255, 255);"></div>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 mx-auto mbr-form">
-                <form action="" method="POST" class="mbr-form form-with-styler" data-verified="">
-                    
-                    <div class="dragArea row">
-                        <div class="col-12">
-                            <h1 class="mbr-section-title mb-2 mbr-fonts-style align-center display-2">
-                                <strong>Track Order Status!</strong>
-                            </h1>
-                        </div>
-                        <div class="col-12">
-                            <p class="mbr-text mbr-fonts-style mb-5 align-center display-7">Fill the form below to get started.</p>
-                        </div>
-                        <div class="col-md col-12 form-group mb-3" data-for="name">
-                            <input type="text" name="errand-id" placeholder="Enter Errand ID" data-form-field="Name" disabled class="form-control s-input" id="errand-id">
-                        </div>
-                        
-                        <div class="mbr-section-btn col-12 col-md-auto"><button type="submit" class="btn btn-primary display-4 box-btn" disabled>Start Now</button></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
+<?php include("search_orderengine.php");?>
+            
 
 <section data-bs-version="5.1" class="features23 cid-teHJfOlj72" id="features23-b">
 

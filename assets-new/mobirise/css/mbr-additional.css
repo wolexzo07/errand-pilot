@@ -722,6 +722,7 @@ a {
   padding-top: 10rem;
   padding-bottom: 7rem;
   background-image: url("../../../assets/images/background2.jpg");
+  background-attachment:fixed;
 }
 .cid-teH5TqR92w .mbr-text,
 .cid-teH5TqR92w .mbr-section-btn {
