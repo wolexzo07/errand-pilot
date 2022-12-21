@@ -1,6 +1,6 @@
-<div class="progress">
-  <div class="progress-bar" style="width:60%">Complete</div>
-</div>
+<?php
+include_once("../finishit.php");
+?>
 
-<?php include_once("dashboardStatistics.php")?>
-<?php include_once("timeline-imported.php")?>
+<?php //include("dashboardStatistics.php")?>
+<?php //include("timeline-imported.php")?>

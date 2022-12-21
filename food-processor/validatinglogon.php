@@ -17,7 +17,12 @@ foreach(x_session("shopping_cart") as $keys => $values)
 		}
 		
 }else{
-	//finish("./","0");
-	finish("manageProfile/manpage","0");
+	if(isset($_SESSION["XCAPE_HACKS"])){
+		$token = $_SESSION["XCAPE_HACKS"];
+		finish("manageProfile/ApplicationDashboard?hash=$token","0");
+	}else{
+		finish("manageProfile/ApplicationDashboard","0");
+	}
+	
 	}
 ?>

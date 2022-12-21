@@ -6,11 +6,6 @@ include_once("../se-validate.php");
 include_once("../siteinfo.php");
 include_once("../refcoder.php");
 
-if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
-
-	//finish("notify/maintenance","Access denied!");
-	exit();
-}
 $_SESSION["PAGE_TOKEN"] = sha1($pageToken).md5($pageToken);
 $userToken = $_SESSION["ER_TOKEN_2022_VI"];
 $user_id = $_SESSION["ER_ID_2022_VI"];
@@ -59,7 +54,7 @@ $user_id = $_SESSION["ER_ID_2022_VI"];
 					
 					
 						<!---------------Just make the content work---------------->
-			<div style="display:none;position:fixed;top:20%;left:37%;z-index:10000" id="loadTemporal" class="text-center"></div>
+			<div style="display:none;position:fixed;top:10%;left:37%;z-index:10000" id="loadTemporal" class="text-center"></div>
 			<div style="background-image:url();background-attachment:fixed;background-color:transparent;padding-left:0pt;padding-right:0pt;" class="container-fluid" id="calculate"></div>
 			
 			<!---------------Just make the content work---------------->
@@ -85,7 +80,7 @@ $user_id = $_SESSION["ER_ID_2022_VI"];
 
          <script type="text/javascript">
              $(document).ready(function () {
-				 load("homedash");
+				 load("homedash?pageToken=<?php if(x_justvalidate($pageToken)){echo $pageToken;}?>");
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                  });

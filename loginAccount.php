@@ -1,16 +1,12 @@
 <?php
 $pageToken = md5(rand());
 include_once("finishit.php");
-include_once("siteinfo.php");
+include("siteinfo.php");
 xstart(0);
-include_once("refcoder.php");
-if(x_count("portalmode","status='offline' AND id='1' LIMIT 1") > 0){
-
-	finish("notify/maintenance","Access denied!");
-	exit();
-}
-
-$_SESSION["XCAPE_HACKS"] = md5(rand());
+include_once("refcoder.php"); // managing Referrals
+include("portalModeManager.php"); // managing portal mode
+include("session_hacks_bypass.php"); // Handling session hacks
+include("session_validator.php"); // checking for session status
 ?>
 <html>
 <head>

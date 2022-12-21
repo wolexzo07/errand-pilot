@@ -6,10 +6,10 @@
                     <h3 class="etext"><?php x_seprint("ER_NAME_2022_VI");?></h3>
                     <strong><?php x_short($_SESSION["ER_NAME_2022_VI"]);?></strong>
                 </div>
-
+					
                 <ul class="list-unstyled components">
 					<li class="active">
-                        <a href="#">
+                        <a href="ApplicationDashboard?hash=<?php echo $_SESSION['XCAPE_HACKS']?>">
                             <i class="fa fa-dashboard"></i>
                             Dashboard
                         </a>
@@ -28,9 +28,9 @@
 					}
 					?>
 					<li>
-                        <a href="#" onclick="load('testi')">
+                        <a href="#" onclick='load("walletManager?hash=<?php echo $_SESSION['XCAPE_HACKS']?>")'>
                             <i class="fa fa-credit-card"></i>
-                            Fund Wallet
+                            Payments
                         </a>
                     </li>
 					

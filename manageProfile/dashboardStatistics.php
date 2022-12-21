@@ -1,6 +1,15 @@
-<?php include("../validatePage.php");?>
-					<div class="col-lg-4 col-md-4 col-12">
-					
+<?php include("onTopValidation.php");?>
+
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+	<div class="progress">
+		<div class="progress-bar" style="width:60%">Complete</div>
+	</div>
+</div>
+</div>
+
+<div class="row">
+			<div class="col-lg-4 col-md-4 col-12">
 					<ul class="list-group orderTop">
 						<!--<li class="list-group-item">TODAY ORDERS <span class="badge bg-success pull-right">-55%</span></li>--->
 						<li class="list-group-item">
@@ -69,4 +78,6 @@
 					</ul>
 					
 					</div>
+</div>
+
 					

@@ -12,8 +12,6 @@
         <link rel="stylesheet" href="assets/css/nucleo-icons.css"/>
         <link rel="stylesheet" href="assets/css/nucleo-svg.css"/>
 		<!-----javascript files---->
-		<!----<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>--->
-		<script src="js/chart.js"></script>
 		<script src="js/online.js"></script>
 		<script src="js/shortcut.js"></script>
 		<script src="js/custom.js"></script>
