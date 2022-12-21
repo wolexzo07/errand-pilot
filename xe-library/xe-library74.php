@@ -1849,5 +1849,6 @@ include("iuofunction.php");
 include("mobilefunction.php");
 //Errand Pilot functions
 include("errandpilot_functions.php");
+include("testingfunctions.php"); // not stable yet but working
 
 ?>

@@ -41,7 +41,21 @@
                     </a>
                     
                 </div>
-                <div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-3" href="loginAccount"><i class="fa fa-lock"></i>&nbsp; SIGN IN</a></div>
+				<?php
+					if(x_validatesession("ER_ID_2022_VI")){
+						?>
+						<div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-3" href="manageProfile/ApplicationDashboard?hash=<?php echo $_SESSION['XCAPE_HACKS']?>"><i class="fa fa-user"></i>&nbsp; Hi <?php
+						$name = $_SESSION["ER_NAME_2022_VI"];
+						echo x_strexplode($name," ", 0)
+						?></a></div>
+						<?php
+					}else{
+						?>
+						<div class="navbar-buttons mbr-section-btn"><a class="btn btn-primary display-3" href="loginAccount"><i class="fa fa-lock"></i>&nbsp; SIGN IN</a></div>
+						<?php
+					}
+				?>
+                
             </div>
         </div>
     </nav>

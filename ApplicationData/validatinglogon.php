@@ -10,7 +10,7 @@ foreach(x_session("shopping_cart") as $keys => $values)
 			if(isset($commp)){
 				finish("final_checkout_n","0");
 			}else{
-				finish("food-processor/final_checkout_n","0");
+				finish("ApplicationData/final_checkout_n","0");
 			}
 		}else{
 			finish("./","Cart empty!");

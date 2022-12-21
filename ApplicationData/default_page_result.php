@@ -1,20 +1,16 @@
-         <?php include("../validatePage.php");?>
-		<div class="row mt-0">
-			
-		<?php
-		
-		if(x_validatesession("XCAPE_HACKS") && x_validatepost("orderFood")){
-			 
-			 $mhash = xp("servicelist"); // merchant identity hashed
-			 $catid = xp("category_id"); // services listed Hashed
-			 $status = 1;
-			 
+<?php
+include("../validatePage.php");
+if(x_count("sub_service","is_set_default='1' LIMIT 1") > 0){
+	
+	foreach(x_select("category_id,subservice_id","sub_service","is_set_default='1'","1","id") as $def){}
+
+			$mhash = $def["subservice_id"]; // merchant identity hashed
+			$catid = $def["category_id"]; // services listed Hashed
+			$status = 1;
 			
 			if(x_count("stockmanager","subservice_id='$mhash' AND category_id='$catid' AND status='$status'") > 0){
 				$merchant = x_getsingle("SELECT subservice FROM sub_service WHERE category_id='$catid' AND subservice_id='$mhash' LIMIT 1","sub_service WHERE category_id='$catid' AND subservice_id='$mhash' LIMIT 1","subservice");
-				?>
-				<h4 style="margin-bottom:3rem;" class="mbr-section-title mbr-fonts-style align-center display-5"><strong><?php echo $merchant;?> MENU</strong></h4>
-				<?php
+				
 				foreach(x_select("0","stockmanager","subservice_id='$mhash' AND category_id='$catid' AND status='$status'","100","stockname") as $items){
 					$id = $items["id"];
 					$sname = strtoupper($items["stockname"]);
@@ -35,7 +31,7 @@
                         <img src="<?php 
 						if(!empty($ft || $sd || $thd || $fth)){
 							if(file_exists("../manageProfile/".$ft) || file_exists("../manageProfile".$sd) || file_exists("../manageProfile/".$thd) || file_exists("../manageProfile/".$fth)){
-								echo "../manageProfile/".$sd;
+								echo "../manageProfile/".$thd;
 							}else{
 								echo "assets/images/missing.png";
 							}
@@ -57,9 +53,14 @@
 								
 								<input type="hidden" value="<?php echo $sp;?>" id="sellingprice<?php echo $id;?>"/>
 								
-								<input type="number" class="form-control w-50" max="<?php echo $qu;?>" min="1" value="1" id="quantity<?php echo $id;?>" style="background-color:aqua;margin:0pt;" title="Enter quantity of <?php echo $sname;?>" placeholder="Enter quantity" />
-								
-								<button style="margin-left:0pt;" id="<?php echo $id;?>" class="btn btn-warning w-100 btn-sm add_to_cart" target="_blank"><i class="fa fa-plus-circle"></i> &nbsp;&nbsp;ADD TO CART</button>
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<input type="number" class="form-control w-100" max="<?php echo $qu;?>" min="1" value="1" id="quantity<?php echo $id;?>" style="background-color:aqua;margin:0pt;margin-top:7pt;height:50px;" title="Enter quantity of <?php echo $sname;?>" placeholder="Enter quantity" />
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<button style="margin-left:0pt;height:50px;" id="<?php echo $id;?>" class="btn btn-warning w-100 btn-sm add_to_cart" target="_blank"><i class="fa fa-plus-circle"></i> &nbsp;&nbsp;ADD</button>
+									</div>
+								</div>
 								
 								<p style="color:green;margin-top:5px;" id="msgnow<?php echo $id;?>"></p>
 								
@@ -73,23 +74,11 @@
 					<?php
 				}
 			}else{
-				$merchant = x_getsingle("SELECT subservice FROM sub_service WHERE category_id='$catid' AND subservice_id='$mhash' LIMIT 1","sub_service WHERE category_id='$catid' AND subservice_id='$mhash' LIMIT 1","subservice");
-				//finish("0","No stock was listed for this Eatary!");
+				finish("0","No stock was listed for Default Eatary!");
 				?>
-				<h4 style="text-align:center;" style="margin-bottom:3rem;" class="mbr-section-title mbr-fonts-style align-center display-5"><strong><?php echo $merchant;?> MENU</strong><small> No stocks was Available</small></h4>
-				<button class="btn btn-success " onclick="parent.location='./?pageToken=52ae104d91f749e0ab6f3bebf553d296'">RETURN</button>
-				
+				<!---<div class="alert alert-warning" role="alert"><i class="fa fa-minus-circle"></i> No stock was listed for this Eatary!</div>--->
 				<?php
 			}
-				
-		}else{
-			// Loading default Restaurant
-			$pageToken = md5(rand());
-			include("default_page_result.php");
+}
 			
-		}
-		?>
-            
-			
-      
-        </div>
+?>

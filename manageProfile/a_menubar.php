@@ -2,7 +2,7 @@
    <div class="card">
 		  <div style="padding:0px;" class="card-header bg-light">
 		 
-		  <div onclick="window.location='manpage?hash=<?php echo $_SESSION['PAGE_TOKEN'];?>'" class="btn-group">
+		  <div onclick="window.location='ApplicationDashboard?hash=<?php echo $_SESSION['PAGE_TOKEN'];?>'" class="btn-group">
 			 <i class="fa fa-home fa-2x"></i>
 			
 		  </div>

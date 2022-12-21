@@ -71,10 +71,10 @@ include("onTopValidation.php");
 		 x_manageWallet("#walletRex","walletTopups");
 		 x_manageWallet("#walletDex","walletdeduction");
 		 // manage payment overview
-		 x_manageWallet("#mapay","sumManual");
-		 x_manageWallet("#walletDex","sumFlutter");
-		 x_manageWallet("#walletDex","sumPaystack");
-		 x_manageWallet("#walletDex","sumWallet"); // deduction
+		 //x_manageWallet("#mapay","sumManual");
+		 //x_manageWallet("#walletDex","sumFlutter");
+		 //x_manageWallet("#walletDex","sumPaystack");
+		 //x_manageWallet("#walletDex","sumWallet"); // deduction
 	 });
 	function x_manageWallet(resultid,cmd){
 		$(resultid).html("<img src='img/ajax-loader.gif'/> Loading");
