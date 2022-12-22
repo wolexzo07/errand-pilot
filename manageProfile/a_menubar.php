@@ -84,15 +84,15 @@
 		  </div>
 		  
 		  
-		  <div class="btn-group">
+		
+		<div class="btn-group">
 			<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
 			   Others
 			</button>
 			<div class="dropdown-menu">
-			  <a class="dropdown-item" href="#">Create login</a>
-			  <a class="dropdown-item" href="#">Add new vendor</a>
-			  <a class="dropdown-item" href="#">View all vendor</a>
-			  <a class="dropdown-item" href="#">Vendor Report</a>
+			  <a class="dropdown-item" onclick="load('a_addmerchant')">Set-up Merchant Profile</a>
+			  <a class="dropdown-item" onclick="load('a_stocks_uploader')">View all vendor</a>
+			  <a class="dropdown-item" onclick="load('a_stocks_uploader')">Vendor Report</a>
 			</div>
 		  </div>
 		  

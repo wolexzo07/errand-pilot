@@ -1,6 +1,5 @@
 <?php
-session_start();
-include_once("../finishit.php");
+include_once("adminpagevalidator.php");
 ?>
 <style>
 #slisting{
@@ -8,15 +7,18 @@ include_once("../finishit.php");
 }
 
 </style>
+
 <div class="row">
 <div class="col-lg-1 col-md-1 col-12"></div>
 <div class="col-lg-8 col-md-8 col-12">
 
-<script type="text/javascript" src="js/formpro.js"></script>
-
 <div class="card formloader">
 <div class="card-heading bg-default p-3">
 	<span class="badge badge-light p-3"><i class="fa fa-plus-circle"></i> NEW STOCKS ITEMS</span>
+	
+	<button style="margin-left:10px;" class="btn btn-primary pull-right" onclick="load('a_stocks_uploader')">
+		<i class="fa fa-upload"></i> CSV
+	</button>
 	<button class="btn btn-info pull-right" onclick="load('a_stocks_uploader')">
 		<i class="fa fa-cog"></i> Refresh
 	</button>
@@ -48,7 +50,7 @@ include_once("../finishit.php");
 	}    
 	}
 	</script>
-	<div style="margin-left:13pt;" id="gallery"><img src="../image/ajax-loader.gif" class="img-responsive"/></div>
+	<div style="margin-left:13pt;" id="gallery"></div>
 	
 	<div class="col-12"></div>
 	
@@ -154,3 +156,74 @@ include_once("../finishit.php");
 <div class="col-lg-1 col-md-1 col-12"></div>
 
 </div>
+
+
+
+<div class="csvModal">
+
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-12 text-center">
+		<i class="fa fa-close closeMT-Modal"></i> &nbsp;&nbsp;
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-lg-2 col-md-2 col-12"></div>
+		<div class="col-lg-8 col-md-8 col-12">
+			
+		</div>
+		<div class="col-lg-2 col-md-2 col-12"></div>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="js/formpro.js"></script>
+
+<style>
+.csvModal{
+	border:3px solid lightgray;
+	position:fixed;
+	top:14%;
+	left:20%;
+	right:20%;
+	width:%;
+	height:400px;
+	background:white;
+	opacity:0.9;
+	z-index:100;
+	box-shadow:10px 10px 10px lightgray;
+	-webkit-box-shadow:10px 10px 10px lightgray;
+	-moz-box-shadow:10px 10px 10px lightgray;
+	-o-box-shadow:10px 10px 10px lightgray;
+	-ms-box-shadow:10px 10px 10px lightgray;
+	overflow-y:auto;
+	padding-bottom:20px;
+	display:block;
+}
+.closeMT-Modal{
+	padding:0px;
+}
+
+.alert-txt , .alert-text{
+	text-align:center;
+	color:green;
+	padding:10px;
+}
+.img-dip{
+	width:200px;
+	border-radius:700px;
+	-moz-border-radius:700px;
+	-webkit-border-radius:700px;
+	-o-border-radius:700px;
+	-ms-border-radius:700px;
+}
+
+</style>
+
+<script>
+  $(document).ready(function(){
+	  $(".closeMT-Modal").click(function(){
+			  $(".csvModal").hide(500);
+		  });
+	   });
+</script>

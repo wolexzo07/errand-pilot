@@ -64,7 +64,7 @@
 										<input type="number" class="form-control w-100" max="<?php echo $qu;?>" min="1" value="1" id="quantity<?php echo $id;?>" style="background-color:aqua;margin-top:7pt;height:50px;" title="Enter quantity of <?php echo $sname;?>" placeholder="Enter quantity" />
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-										<button style="margin-left:0pt;height:50px;" id="<?php echo $id;?>" class="btn btn-warning w-100 btn-sm add_to_cart" target="_blank"><i class="fa fa-plus-circle"></i> &nbsp;&nbsp;ADD</button>
+										<button style="margin-left:0pt;height:50px;padding:5px;" id="<?php echo $id;?>" class="btn btn-warning w-100 btn-sm add_to_cart" target="_blank"><i class="fa fa-plus-circle"></i> &nbsp;&nbsp;ADD</button>
 									</div>
 								</div>
 								

@@ -81,7 +81,7 @@
 	
 	// Manage notification
 	function ep_notifier($type,$title,$message,$userid,$category){
-		$filter = array("p","all","admin");
+		$filter = array("p","all","admin","biz");
 		$filter_cat = array('credit','debit','refund','create','fulfil','ship','deliver','cancel');
 		if(in_array($type,$filter) && in_array($category,$filter_cat)){
 			$success = "&nbsp;";

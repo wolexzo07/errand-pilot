@@ -180,7 +180,7 @@ include("session_validator.php"); // checking for session status
 </div>
 <!--  End Modal -->
 
-<script type="text/javascript" src="food-processor/js/countries-nigeria.js"></script>
+<script type="text/javascript" src="ApplicationData/js/countries-nigeria.js"></script>
 <script language="javascript">print_country("country");</script> 
 <?php include_once("footextra.php");?>
 </body>

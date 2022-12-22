@@ -6,7 +6,7 @@ if(x_validateget("query") && x_validatesession("PAGE_TOKEN")){
 	$getlimit = x_getsingle("SELECT value FROM limit_query_result WHERE status='1'","limit_query_result WHERE status='1'","value");
 	if(x_count("sub_service","category_id='$q' AND status='1'") > 0){
 		?>
-			<p class="txtlabel">Sub-Service</p>
+			<p class="txtlabel">Sub-Service (Merchant Identity)</p>
 	<select class="form-control" required name="subcategory">
 				 <?php
 					 foreach(x_select("0","sub_service","category_id='$q' AND status='1'","$getlimit","id") as $slist){
